@@ -19,7 +19,7 @@
      1 ≤ L ≤ R ≤ 10^18
 ## Example :
 
-#### Input :
-    1 10
-#### Output :
-    2
+    ### Input :
+        1 10
+    ### Output :
+        2
