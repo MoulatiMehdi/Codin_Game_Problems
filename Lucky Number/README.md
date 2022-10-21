@@ -7,10 +7,11 @@
     Now we want to know how many lucky numbers (without leading zeroes) are there between L and R, inclusive?
 
 
-Input
+#### Input
 
     Line 1: Two integers, `L` and `R`.
-Output
+
+#### Output
 
     Line 1: An integer, indicating the amount of lucky numbers between [ `L` , `R` ].
 
@@ -18,7 +19,7 @@ Output
      1 ≤ L ≤ R ≤ 10^18
 ## Example :
 
-### Input :
+#### Input :
     1 10
-### Output :
+#### Output :
     2
