@@ -1,6 +1,6 @@
-export const X = 'X' // player 1
-export const O = 'O' // player 2
-export const E = '.'  // empty cell
+export const HUMAN = 'X' // player 1
+export const AI = 'O' // player 2
+const EMPTY = '.'  // empty cell
 const INF = Infinity
 
 // all winning positions
@@ -18,9 +18,9 @@ const SCORES = {
 
 export function isWinner(B){
 
-        var count_E = 0  // count empty cell 
+        let count_E = 0  // count empty cell 
 
-        for(var row of WIN){
+        for(let row of WIN){
     
             var C1 = B[row[0]]
             var C2 = B[row[1]]
@@ -29,13 +29,13 @@ export function isWinner(B){
             if(C1 === C2 && C1=== C3){
 
                 // is there a Winner ?
-                if(C1 !== E ) 
-                    return SCORES[C1];
+                if(C1 !== EMPTY ) 
+                    return C1;
             }
             
-            if(C1 == E) count_E++;
-            if(C2 == E) count_E++;
-            if(C3 == E) count_E++;
+            if(C1 == EMPTY) count_E++;
+            if(C2 == EMPTY) count_E++;
+            if(C3 == EMPTY) count_E++;
         }
 
         //  is Still Playing ?
@@ -43,8 +43,9 @@ export function isWinner(B){
             return null
         
         // Draw Game
-        return SCORES.tie;
+        return 'tie';
 }
+
 
 function minimax(board,depth,isMax){
 
@@ -52,104 +53,58 @@ function minimax(board,depth,isMax){
 
     if(winner != null){
     
-            return  winner
-        
+        return  SCORES[winner];
 
     }
     
     if(isMax){
 
-        let value =  -INF
+        let value =  - INF
+        for(let i=0 ; i < 9 ; i++){
 
-        for(var i=0 ; i < 9 ; i++){
+            if(board[i] == EMPTY){
 
-            if(board[i] == E){
-
-                board[i] = O
+                board[i] = AI
                 value = Math.max(value,minimax(board,depth + 1,false))
-                board[i] = E
+                board[i] = EMPTY
             }
 
         }
         return value
-
-    } else{
+    } else {
 
         let value = INF
+        for(let i = 0 ; i < 9 ; i ++){
 
-        for(var i = 0 ; i < 9 ; i ++){
+            if(board[i] == EMPTY){
 
-            if(board[i] == E){
-
-                board[i] = X
+                board[i] = HUMAN
                 value = Math.min(value,minimax( board, depth + 1,true))
-                board[i] = E
+                board[i] = EMPTY
             }
 
         }
         return value
-
     }
 }
 
-export class TicTacToc {
-
-    /**
-     * Initialization of the Tic-Tac-Toc board
-     * @returns void
-     */
-    constructor(){
-
-        this.B = [
-            E,E,E,
-            E,E,E,
-            E,E,E
-        ];
-    }
-    setMove(index,player){
-
-            this.B[index] = player
-
-    }  
-
-
-    bestMove(){
-
-        let bestScore = -INF
-        let move = null
-
-        for(var i = 0 ; i < 9 ; i ++){
-
-            if(this.B[i] == E){
-
-                this.B[i] = X
-                var score = minimax( this.B, 1, false)
-                
-                if(score > bestScore){
-                    move = i;
-                    bestScore = score
-                }
-                
-                this.B[i] = E
-
+export function bestMove(board){
+    // AI turn to make the Move
+    let bestScore = -INF
+    let move = null
+    for(let i = 0 ; i < 9 ; i ++){
+        // Is the cell available ?
+        if(board[i] == EMPTY){
+            board[i] = AI
+            let score = minimax(board, 0, false)
+            
+            if(score > bestScore){
+                move = i;
+                bestScore = score
             }
-        }
-            return move
-    }
-    print_board(){
-
-        for(let i = 0 ; i < 9 ; i ++){
-
-            var row = "\t Board :"
-            if(i % 3 == 0){
-
-                console.log(row + ' |')
-                console.log(' +---+---+---+')
-                row = ""
-            }
-            row += ' | ' + this.B[i]
+            
+            board[i] = EMPTY
         }
     }
+        return move
 }
-
-
