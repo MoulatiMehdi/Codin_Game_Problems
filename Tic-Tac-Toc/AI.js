@@ -3,8 +3,6 @@ import { Node } from "./decisionTree.js"
 export const HUMAN = 'O' // player 1
 export const AI    = 'X'  // player 2
 export const E     = '.'  // empty cell
-
-let tree = new Node(10);
 const INF = Infinity
 
 /* all winning positions
@@ -56,32 +54,26 @@ export function isWinner(B){
 
 
 
-export function bestMove(board){
-    console.time('best move start ')
-    // AI turn to make the Move
-    let bestScore = -INF
+export function bestMove(board,player){
+    
     let move;
-    for(let i = 0 ; i < 9 ; i ++){
-        // Is the cell available ?
-        if(board[i] == E){
-            
-            board[i] = AI
-            let score = minimax(board, 0, false,i+'')
-            board[i] = E
-            tree.addChild(score,i+'')
-
-            console.log(`index : ${i} , score ${score}, bestScore`)
-            if(score > bestScore){
-                move = i;
-                bestScore = score
-            }
-            
-           
-        }
-    }
-    console.log(tree)
-    console.log('------------')
-    console.timeEnd('best move start ')
+    let bestScore;
+     bestScore = -INF
+     // AI turn to make the Move
+     
+     for(let i = 0 ; i < 9 ; i ++){
+         // Is the cell available ?
+         if(board[i] == E){
+             board[i] = AI
+             let score = minimax(board, 0, false,i)
+             board[i] = E
+             if(score > bestScore){
+                 move = i;
+                 bestScore = score
+             }
+         
+         }
+     }  
         return move
 }
 
@@ -93,30 +85,34 @@ function minimax(board,depth,isMax,key=""){
     if(result != null){
         return  SCORES[result];
     }
+    
+    let move = null
 
     if(isMax){
         let value =  - INF
         for(let i = 0 ; i < 9 ; i++){
             if(board[i] == E){
                 board[i] = AI
-                let score  = minimax(board,depth + 1,false,key+i+'')
-                value = Math.max(value,score)
-                tree.addChild(score ,key+i+'')
+                let score = minimax(board,depth + 1,false,key+i)
+                if(score > value){
+                    value = score
+                }
+                
                 board[i] = E
             }
         }
         return value
     } else {
         let value = INF
+        
         for(let i = 0 ; i < 9 ; i ++){
             if(board[i] == E){
                 board[i] = HUMAN
-                let score = minimax( board, depth + 1,true,key+i+'')
+                var score = minimax( board, depth + 1,true,key+i)       
+                if(score < value){
+                    value = score
+                }
                 board[i] = E
-
-
-                value = Math.min(value,score)
-                
             }
         }
         return value

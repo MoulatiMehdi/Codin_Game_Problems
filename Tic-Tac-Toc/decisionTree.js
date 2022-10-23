@@ -1,23 +1,21 @@
 export class Node{
-    constructor(score){
-        this.score = score;
-        this.children = []
-    }
-    
-    setValue(value){
-        this.value = value
+    constructor(move=null,score=0){
+        this.bestMove = move;
+        this.score = score
+        this.children = {}
     }
 
-    addChild(score,key=""){
-        var node = this
-
+    addChild(key="",move,score){
+        
+        let node = this
         for(var i of key){
             if(node.children[i] == undefined){
-
                 node.children[i] = new Node()
             }
+            
             node = node.children[i]
         }
+        node.bestMove = move
         node.score = score
     }
 }

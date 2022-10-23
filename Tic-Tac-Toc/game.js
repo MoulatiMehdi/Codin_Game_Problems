@@ -16,6 +16,7 @@ function restart(){
         E,E,E,
         E,E,E
     ];
+    
 }
 
 function move(index,player){
@@ -53,6 +54,6 @@ document.getElementById('reset').onclick = function(){
     for(let i = 0 ; i < 9 ; i ++){
         document.getElementById(ITEM_NAME + '-' + i).innerText = ""
     }
+    move(bestMove(board),AI)
 }
 
-move(bestMove(board),AI)
