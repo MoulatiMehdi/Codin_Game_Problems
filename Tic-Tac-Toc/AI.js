@@ -1,6 +1,6 @@
 export const HUMAN = 'O' // player 1
-export const AI = 'X' // player 2
-export const E = '.'  // empty cell
+export const AI    = 'X'  // player 2
+export const E     = '.'  // empty cell
 const INF = Infinity
 
 /* all winning positions
