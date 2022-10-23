@@ -1,9 +1,13 @@
-export const HUMAN = 'X' // player 1
-export const AI = 'O' // player 2
-const EMPTY = '.'  // empty cell
+export const HUMAN = 'O' // player 1
+export const AI = 'X' // player 2
+export const E = '.'  // empty cell
 const INF = Infinity
 
-// all winning positions
+/* all winning positions
+    0 1 2
+    3 4 5
+    6 7 8
+*/
 const WIN  = [
     [0,1,2],[3,4,5],[6,7,8],
     [0,3,6],[1,4,7],[2,5,8],
@@ -22,20 +26,20 @@ export function isWinner(B){
 
         for(let row of WIN){
     
-            var C1 = B[row[0]]
-            var C2 = B[row[1]]
-            var C3 = B[row[2]]
+            let C1 = B[row[0]]
+            let C2 = B[row[1]]
+            let C3 = B[row[2]]
             
             if(C1 === C2 && C1=== C3){
 
                 // is there a Winner ?
-                if(C1 !== EMPTY ) 
+                if(C1 !== E ) 
                     return C1;
             }
             
-            if(C1 == EMPTY) count_E++;
-            if(C2 == EMPTY) count_E++;
-            if(C3 == EMPTY) count_E++;
+            if(C1 == E) count_E++;
+            if(C2 == E) count_E++;
+            if(C3 == E) count_E++;
         }
 
         //  is Still Playing ?
@@ -47,64 +51,60 @@ export function isWinner(B){
 }
 
 
-function minimax(board,depth,isMax){
-
-    let winner = isWinner(board)
-
-    if(winner != null){
-    
-        return  SCORES[winner];
-
-    }
-    
-    if(isMax){
-
-        let value =  - INF
-        for(let i=0 ; i < 9 ; i++){
-
-            if(board[i] == EMPTY){
-
-                board[i] = AI
-                value = Math.max(value,minimax(board,depth + 1,false))
-                board[i] = EMPTY
-            }
-
-        }
-        return value
-    } else {
-
-        let value = INF
-        for(let i = 0 ; i < 9 ; i ++){
-
-            if(board[i] == EMPTY){
-
-                board[i] = HUMAN
-                value = Math.min(value,minimax( board, depth + 1,true))
-                board[i] = EMPTY
-            }
-
-        }
-        return value
-    }
-}
 
 export function bestMove(board){
     // AI turn to make the Move
     let bestScore = -INF
-    let move = null
+    let move;
     for(let i = 0 ; i < 9 ; i ++){
         // Is the cell available ?
-        if(board[i] == EMPTY){
+        if(board[i] == E){
+            
             board[i] = AI
             let score = minimax(board, 0, false)
-            
+            board[i] = E
+
+            console.log(`index : ${i} , score ${score}, bestScore`)
             if(score > bestScore){
                 move = i;
                 bestScore = score
             }
             
-            board[i] = EMPTY
+           
         }
     }
+    console.log('------------')
         return move
+}
+
+
+function minimax(board,depth,isMax){
+
+    let result = isWinner(board)
+
+    if(result != null){
+        return  SCORES[result];
+    }
+
+    if(isMax){
+        let value =  - INF
+        for(let i = 0 ; i < 9 ; i++){
+            if(board[i] == E){
+                board[i] = AI
+                value = Math.max(value,minimax(board,depth + 1,false))
+                board[i] = E
+            }
+        }
+        return value
+    } else {
+        let value = INF
+        for(let i = 0 ; i < 9 ; i ++){
+            if(board[i] == E){
+                board[i] = HUMAN
+                value = Math.min(value,minimax( board, depth + 1,true))
+                board[i] = E
+            }
+        }
+        return value
+    }
 }

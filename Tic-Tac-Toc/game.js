@@ -1,20 +1,25 @@
-import { bestMove,EMPTY,AI,HUMAN,isWinner} from "AI";
+import { 
+    isWinner , bestMove ,
+    AI , HUMAN , E
+
+} from "./AI.js"
+
 const CONTAINER_NAME = "grid-container"
 const ITEM_NAME      = "grid-item"
-let board            =  restart()
+let   board          =  restart()
 
 
 
 function restart(){
     return  [
-        EMPTY,EMPTY,EMPTY,
-        EMPTY,EMPTY,EMPTY,
-        EMPTY,EMPTY,EMPTY
+        E,E,E,
+        E,E,E,
+        E,E,E
     ];
 }
 
 function move(index,player){
-    if(isWinner(B) !== null) {
+    if(isWinner(board) !== null) {
         console.log("the game is finished")
         return
     }
@@ -24,14 +29,14 @@ function move(index,player){
 
 for(let i = 0 ; i < 9 ; i ++){
 
-    var id = ITEM_NAME + '-' + i    
+    let id = ITEM_NAME + '-' + i    
     document.getElementById(id).onclick = function (){
         if(isWinner(board) !== null) {
             console.log("the game is finished")
         }else{
 
             if(board[i] != E) return
-            move(index,HUMAN)
+            move(i,HUMAN)
             move(bestMove(board),AI)
         }
     }
