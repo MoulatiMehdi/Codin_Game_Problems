@@ -15,8 +15,8 @@ const WIN  = [
 ];
 
 const SCORES = {
-    X: 10,
-    O: -10,
+    [AI]: 10,  // X
+    [HUMAN]: -10, // O
     tie: 0,
 }
 
