@@ -46,6 +46,7 @@ for(let i = 0 ; i < 9 ; i ++){
             
 }
 
+
 // restart button
 document.getElementById('reset').onclick = function(){
     board = restart()
@@ -53,3 +54,5 @@ document.getElementById('reset').onclick = function(){
         document.getElementById(ITEM_NAME + '-' + i).innerText = ""
     }
 }
+
+move(bestMove(board),AI)

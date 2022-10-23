@@ -1,6 +1,10 @@
+import { Node } from "./decisionTree.js"
+
 export const HUMAN = 'O' // player 1
 export const AI    = 'X'  // player 2
 export const E     = '.'  // empty cell
+
+let tree = new Node(10);
 const INF = Infinity
 
 /* all winning positions
@@ -53,6 +57,7 @@ export function isWinner(B){
 
 
 export function bestMove(board){
+    console.time('best move start ')
     // AI turn to make the Move
     let bestScore = -INF
     let move;
@@ -61,8 +66,9 @@ export function bestMove(board){
         if(board[i] == E){
             
             board[i] = AI
-            let score = minimax(board, 0, false)
+            let score = minimax(board, 0, false,i+'')
             board[i] = E
+            tree.addChild(score,i+'')
 
             console.log(`index : ${i} , score ${score}, bestScore`)
             if(score > bestScore){
@@ -73,12 +79,14 @@ export function bestMove(board){
            
         }
     }
+    console.log(tree)
     console.log('------------')
+    console.timeEnd('best move start ')
         return move
 }
 
 
-function minimax(board,depth,isMax){
+function minimax(board,depth,isMax,key=""){
 
     let result = isWinner(board)
 
@@ -91,7 +99,9 @@ function minimax(board,depth,isMax){
         for(let i = 0 ; i < 9 ; i++){
             if(board[i] == E){
                 board[i] = AI
-                value = Math.max(value,minimax(board,depth + 1,false))
+                let score  = minimax(board,depth + 1,false,key+i+'')
+                value = Math.max(value,score)
+                tree.addChild(score ,key+i+'')
                 board[i] = E
             }
         }
@@ -101,8 +111,12 @@ function minimax(board,depth,isMax){
         for(let i = 0 ; i < 9 ; i ++){
             if(board[i] == E){
                 board[i] = HUMAN
-                value = Math.min(value,minimax( board, depth + 1,true))
+                let score = minimax( board, depth + 1,true,key+i+'')
                 board[i] = E
+
+
+                value = Math.min(value,score)
+                
             }
         }
         return value
