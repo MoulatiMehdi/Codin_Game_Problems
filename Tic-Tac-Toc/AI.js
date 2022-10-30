@@ -83,7 +83,7 @@ function minimax(board,depth,isMax,key=""){
     let result = isWinner(board)
 
     if(result != null){
-        return  SCORES[result];
+        return  (isMax)? SCORES[result] - depth : SCORES[result] + depth;
     }
     
     let move = null

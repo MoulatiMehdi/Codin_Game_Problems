@@ -46,7 +46,7 @@ for(let i = 0 ; i < 9 ; i ++){
     }
             
 }
-
+move(2,HUMAN)
 
 // restart button
 document.getElementById('reset').onclick = function(){

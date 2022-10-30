@@ -1,4 +1,5 @@
 export class Node{
+    
     constructor(move=null,score=0){
         this.bestMove = move;
         this.score = score
