@@ -8,9 +8,13 @@ const n = 150000;
 console.log(cardinal(n))
 
 
-
+/**
+ *  convert a number to words 
+ * @param {number} X 
+ * @returns string
+ */
 function cardinal(X){
-
+    X = X+''
     if(X == '0') return 'zero'
 
     len  = 3 - X.length% 3 + X.length 
