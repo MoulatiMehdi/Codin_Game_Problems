@@ -1,0 +1,9 @@
+/** @format */
+
+const handleTest = require("./testFuntion");
+const input = [];
+const output = [];
+
+// Mocking user input and capturing console.log output
+
+test("Simpe Operations Test", () => handleTest(input, output));
