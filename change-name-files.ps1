@@ -32,7 +32,7 @@ $local:files = Get-ChildItem -Path ".\" -Recurse  -Exclude 'node_modules' | Sort
 }
 
 if ($files.Count -eq 0) {
-    Write-Host -ForegroundColor Cyan "All Files are Names Well"
+    Write-Host -ForegroundColor Green "All Files are Names Well."
 }
 else {
 
