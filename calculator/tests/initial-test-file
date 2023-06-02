@@ -1,6 +1,6 @@
 /** @format */
 
-const handleTest = require("./testFuntion");
+const handleTest = require("./testfuntion");
 const input = [];
 const output = [];
 
