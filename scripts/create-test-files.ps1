@@ -1,9 +1,10 @@
 $jsonFile = ".\test.json"
 $testFolder = '.\tests'
-$initTest = ".\tests\initial-test-file"
+$initTest = "..\..\shared\initial-test-file"
 $circle = [char]0x25CF
 
-Set-Location  D:\Programming\Solve_Puzzles\Codin_Game_Problems\calculator
+$path = "D:\Programming\Solve_Puzzles\codin-game-problems\puzzles\calculator"
+Set-Location  $path
 # get the mockup test file as a string
 $content = Get-Content -Path $initTest -Raw 
 Write-Host -ForegroundColor Magenta "$circle Loading the JSON File..."
