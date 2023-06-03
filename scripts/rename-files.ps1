@@ -1,38 +1,20 @@
+param(
+    [string]$Path = ".\"
+)
 
-function msg {
-    param(
-        [System.ConsoleColor]$fg,
-        [System.ConsoleColor]$bg,
-        [string]$label,
-        [string]$text)
-    
-    $label = $label.ToUpper().Trim()
-    $text = $text.Trim()
+Import-Module -Name "D:\Programming\Solve_Puzzles\codin-game-problems\scripts\message.psm1"
 
-    Write-Host -ForegroundColor $fg -BackgroundColor $bg " $label " -NoNewline 
-    Write-Host -ForegroundColor $bg "`t$text" -NoNewline
-}
-function pass {
-    param ([string]$msg )
-    msg -fg Black -bg Green -label 'Pass' -text $msg + "`n"
-}
-function fail {
-    param($msg)
-    msg -fg Black -bg Red -label 'fail' -text $msg
-}
-function warn {
-    param($msg)
-    msg -fg Black -bg Yellow -label 'WARN' -text $msg+"`n"
-}
 
-Write-Host -ForegroundColor White "- Replacing ' ' and '_' Characters with '-'  ...`n"
+Write-Host -ForegroundColor White "$circle Renaming the files and Folders inside the folder" -NoNewline
+Write-Host -ForegroundColor cyan " '$Path' " -NoNewline
+Write-Host -ForegroundColor White " ..."
 
-$local:files = Get-ChildItem -Path ".\" -Recurse  -Exclude 'node_modules' | Sort-Object -Property @{Expression = { $_.PSIsContainer -eq $true } } | Where-Object { 
+$files = Get-ChildItem -Path $Path -Recurse  -Exclude 'node_modules' | Sort-Object -Property @{Expression = { $_.PSIsContainer -eq $true } } | Where-Object { 
     $_.FullName -notlike '*\node_modules\*' -and $_.Name -cmatch "[ _A-Z]+" 
 }
 
 if ($files.Count -eq 0) {
-    Write-Host -ForegroundColor Green "All Files are Names Well."
+    Write-Host -ForegroundColor Green "All Files are Named Well."
 }
 else {
 

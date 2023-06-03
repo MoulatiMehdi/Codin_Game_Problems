@@ -1,58 +1,52 @@
 /** @format */
 
-const isOperator = (key) => /^[+-/x]+$/g.test(key);
-const isDigit = (key) => /^\d+$/g.test(key);
-const parse = (a, b, operator) => {
-	operator == "x" && (operator = "*");
-	return eval(a + operator + b).toFixed(3) / 1 + "";
-};
+function solve(readline) {
+	const isOperator = (key) => /^[+-/x]+$/g.test(key);
+	const isNum = (key) => /^\d+$/g.test(key);
+	const parse = (a, b, oper) =>
+		eval(a + (oper == "x" ? "*" : oper) + b).toFixed(3) / 1;
 
-let screen = "0";
-let operator = "+";
-let prevKey = "+";
-let prevNum = "0";
+	function reset() {
+		screen = prevNum = "0";
+		oper = prevKey = "+";
+	}
 
-function reset() {
-	screen = "0";
-	operator = "+";
-	prevKey = "+";
-	prevNum = "0";
-}
+	const n = +readline();
+	const keys = Array(n)
+		.fill(null)
+		.map((c) => readline());
 
-function solve(keys) {
 	reset();
 	while (keys.length > 0) {
 		const key = keys.shift();
 
 		if (key == "AC") {
 			reset();
-		} else if (prevKey == "AC" && isDigit(key)) {
+		} else if (prevKey == "AC" && isNum(key)) {
 			screen = key;
-		} else if (key == "=" && prevKey == "=") {
-			screen = parse(screen, prevNum, operator);
 		} else if (key == "=") {
-			var a = screen;
-			screen = parse(prevNum, screen, operator);
-			prevNum = a;
-		} else if (prevKey == "=" && isDigit(key)) {
+			if (prevKey == "=") {
+				screen = parse(screen, prevNum, oper);
+			} else {
+				var a = screen;
+				screen = parse(prevNum, screen, oper);
+				prevNum = a;
+			}
+		} else if (prevKey == "=" && isNum(key)) {
 			reset();
 			screen = key;
-		} else if (prevKey == "=" && isOperator(key)) {
-			operator = key;
-		} else if (isDigit(prevKey + key)) {
-			// DONE
+		} else if (isOperator(key)) {
+			if (isNum(prevKey)) {
+				screen = parse(prevNum, screen, oper);
+			}
+			oper = key;
+		} else if (isNum(prevKey + key)) {
 			screen += key;
-		} else if (isOperator(key + prevKey)) {
-			//replace the key
-			operator = key;
-		} else if (isOperator(prevKey) && isDigit(key)) {
+		} else if (isNum(key) && isOperator(prevKey)) {
 			prevNum = screen;
 			screen = key;
-		} else if (isOperator(key) && isDigit(prevKey)) {
-			screen = parse(prevNum, screen, operator);
-			operator = key;
 		}
-		console.log(screen/1);
+		console.log(screen / 1);
 		prevKey = key;
 	}
 }

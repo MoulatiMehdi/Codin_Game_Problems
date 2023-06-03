@@ -2,8 +2,8 @@
 
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
-const input = ["8", "2", "1", "x", "3", "-", "/", "9", "="];
-const output = ["2", "21", "21", "3", "63", "63", "9", "7"];
+const input = ["7", "Alfa 1", "Bravo 1", "Charlie 12", "Delta 4", "Echo 2", "Foxtrot 10", "Golf 8", "( Alfa [ Charlie Delta ( Bravo [ Echo ( Foxtrot Golf ) ] ) ] )"];
+const output = ["2.4"];
 
 const readline = () => {
 	return input.shift();

@@ -2,8 +2,8 @@
 
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
-const input = ["8", "2", "1", "x", "3", "-", "/", "9", "="];
-const output = ["2", "21", "21", "3", "63", "63", "9", "7"];
+const input = ["1", "Star 78", "[ ( [ Star ( Star Star ) ] [ Star ( Star Star ) ] Star ) ( [ Star ( Star Star ) ] [ Star ( Star Star ) ] Star ) ]"];
+const output = ["91.0"];
 
 const readline = () => {
 	return input.shift();

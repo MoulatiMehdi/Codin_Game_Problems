@@ -1,10 +1,8 @@
 /** @format */
 
-function solve(input) {
-	const readline = () => {
-		return input.shift();
-	};
-    
+
+function solve(readline) {
+
 	const getLine = () => readline().split(" ");
 	const N = +readline();
 	const R = {
