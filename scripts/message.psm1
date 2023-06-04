@@ -1,28 +1,65 @@
 
-function msg {
-    param(
-        [System.ConsoleColor]$fg,
-        [System.ConsoleColor]$bg,
-        [string]$label,
-        [string]$text)
+function Write-Message {
     
-    $label = $label.ToUpper().Trim()
-    $text = $text.Trim()
+    param([string]$Title,
+        [string]$Message,
+        [switch]$NoNewline,
+        [System.ConsoleColor]$Fg,
+        [System.ConsoleColor]$Bg
+    )
+    
+    $Title = $Title.ToUpper().Trim()
+    $Message = $Message.Trim()
+    Write-Host -ForegroundColor $Fg -BackgroundColor $Bg " $Title " -NoNewline 
 
-    Write-Host -ForegroundColor $fg -BackgroundColor $bg " $label " -NoNewline 
-    Write-Host -ForegroundColor $bg "`t$text" -NoNewline
+    if ($NoNewLine) {
+        Write-Host -ForegroundColor $Bg "`t$Message" -NoNewline
+
+    }
+    else {
+        Write-Host -ForegroundColor $Bg "`t$Message" 
+
+    }
 }
 function pass {
-    param ([string]$msg )
-    msg -fg Black -bg Green -label 'Pass' -text $msg + "`n"
+    param (
+        [string]$Message,
+        [switch]$NoNewline 
+    )
+    if ($NoNewLine) {
+        Write-Message -fg Black -Bg Green -Title 'Pass' -Message $Message -NoNewLine
+
+    }
+    else {
+        Write-Message  -fg Black -Bg Green -Title 'Pass' -Message $Message 
+
+    }
 }
 function fail {
-    param($msg)
-    msg -fg Black -bg Red -label 'fail' -text $msg
+    param (
+        [string]$Message,
+        [switch]$NoNewline 
+    )
+    if ($NoNewline) {
+        Write-Message -fg Black -Bg Red -Title 'fail' -Message $Message -NoNewLine
+    }
+    else {
+        Write-Message -fg Black -Bg Red -Title 'fail' -Message $Message 
+    }
 }
 function warn {
-    param($msg)
-    msg -fg Black -bg Yellow -label 'WARN' -text $msg+"`n"
+    param (
+        [string]$Message,
+        [switch]$NoNewline 
+    )
+
+
+    if ($NoNewline) {
+        Write-Message -fg Black -Bg Yellow -Title 'WARN' -Message $Message -NoNewLine
+    }
+    else {
+        Write-Message -fg Black -Bg Yellow -Title 'WARN' -Message $Message
+    }    
 }
 
 $circle = [char]0x25CF

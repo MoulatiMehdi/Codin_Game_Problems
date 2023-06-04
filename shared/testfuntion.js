@@ -1,5 +1,5 @@
 /** @format */
-let consoleOutput = [];
+let consoleOutput = "";
 const mockedLog = (output) => {
 	consoleOutput.push(output.toString());
 };

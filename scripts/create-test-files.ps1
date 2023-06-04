@@ -27,19 +27,18 @@ try {
     $tests = get-content -raw $fileJson  | convertFrom-json  | Select-Object -ExpandProperty tests 
     
     # send message to the console
-    pass -msg "The JSON file has been loaded."
+    pass -Message "The JSON file has been loaded."
     Write-Host ''
     Write-Host -ForegroundColor Magenta "$circle Removing all files with test.js extension ..."
     
     # remove test files with extension '.test.js'
     Remove-Item -Path "$folderTest\*.test.js" -Force  -Recurse 
-    pass -msg "All files with '.test.js' extension have been removed."
-    Write-Host ""
+    pass -Message "All files with '.test.js' extension have been removed."
 }
 catch {
     <#Do this if a terminating exception happens#>
-    fail -msg $Error[0]
-    Write-Host ''
+    fail -Message "Failed to Create test Test files : "
+    Write-Host -ForegroundColor Red "`t+ "$Error[0]
     exit 
 }
 
@@ -60,8 +59,7 @@ foreach ($test in $tests) {
         $null = New-Item -ItemType File -Path $filePath -Force 
 
         # throw this message if the file has been created
-        pass  -msg "$file"
-        Write-Host ''
+        pass  -Message $file
 
         
         # change the input and output of the mockup string
@@ -76,8 +74,8 @@ foreach ($test in $tests) {
     }
     catch {
         <#Do this if a terminating exception happens#>
-        fail -msg $file
-        Write-Host "`t Error : "$Error[0]
+        fail -Message $file
+        Write-Host "`t+ Error : "$Error[0]
 
     }
     

@@ -28,8 +28,8 @@ else {
         <# Action to perform if the condition is true #>
         try {
             $null = rename-item -Path $file.FullName -NewName $newName -Force -ErrorAction Stop
-            pass("Target : " + $file.Name)
-            Write-Host -ForegroundColor Gray "`n`tOld Name : "  -NoNewline
+            pass -Message "Target : "$file.Name
+            Write-Host -ForegroundColor Gray "`tOld Name : "  -NoNewline
             Write-Host -ForegroundColor White $file.Name 
             Write-Host -ForegroundColor Cyan "`tNew Name : " -NoNewline
             Write-Host -ForegroundColor White  $newName
@@ -37,10 +37,10 @@ else {
         catch {
             <#Do this if a terminating exception happens#>
             $local:err = $Error[0]
-            fail( "Failed to Rename the item")
+            fail -Message "Failed to Rename the item : "
             Write-Host -ForegroundColor Cyan " '$($file.Name)' :"
-            Write-Host -ForegroundColor red   "`t`t- Error : `t$err"
-            Write-Host -ForegroundColor White "`t`t- Path  : `t$file"
+            Write-Host -ForegroundColor red   "`t`t+ Error : `t$err"
+            Write-Host -ForegroundColor White "`t`t+ Path  : `t"$file.FullName
         }
     }
 }
