@@ -6,7 +6,7 @@
 		"PSscript": "powershell -ExecutionPolicy Bypass -Comman",
 		"create-test-files": "npm run  PSscript \"& {param($target = $env:npm_config_name) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\create-test-files.ps1 -Name $target}\" --silent",
 		"rename-files": "npm run PSscript \"& {param($path = $env:npm_config_path) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\rename-files.ps1 -Path $path }\"  --silent",
-		"create-puzzle": "npm run --silent PSscript \"D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\create-puzzle.ps1 -Name \""
+		"create-puzzle": "npm run --silent PSscript \"& {param($Name = $env:npm_config_Name) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\create-puzzle.ps1 -Name $Name}\""
 	},
 	"dependencies": {
 		"child_process": "^1.0.2"
