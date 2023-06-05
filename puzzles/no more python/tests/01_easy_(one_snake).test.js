@@ -2,12 +2,13 @@
 
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
-const input = [];
-const output = [];
+const input = ["7 7", ".......", ".......", ".......", "<-----o", ".......", ".......", ".......", ""];
+const output = ["7", "1"];
 
 const readline = () => {
 	return input.shift();
 };
 // Mocking user input and capturing console.log output
 
-test("name", () => handleTest(output, solve, readline));
+test("01 Easy (One Snake)", () => handleTest(output, solve, readline));
+

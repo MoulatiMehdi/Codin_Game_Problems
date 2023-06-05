@@ -23,7 +23,7 @@ try {
     pass -Message "JSON File have been created."
     $null = New-Item -Path $FileMain
     pass -Message "main.js File have been created."
-    Set-Content $FileMain -Value "function solve(readline){`n`n}`n`nmodule.export = solve"
+    Set-Content $FileMain -Value "function solve(readline){`n`n}`n`nmodule.exports = solve"
 }
 catch {
     <#Do this if a terminating exception happens#>

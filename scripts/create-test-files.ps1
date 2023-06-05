@@ -28,7 +28,6 @@ try {
     
     # send message to the console
     pass -Message "The JSON file has been loaded."
-    Write-Host ''
     Write-Host -ForegroundColor Magenta "$circle Removing all files with test.js extension ..."
     
     # remove test files with extension '.test.js'
