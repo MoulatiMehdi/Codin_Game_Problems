@@ -16,6 +16,8 @@ Don't be Lazy. Go solve it by your own.
 
 # Commands :
 
-`npm run create-puzzle --name=<puzzle_name>`
-`npm run create-test-files --name=<puzzle_name>`
-`npm run rename-files --path=<folder name>`
+-   `npm run create-puzzle --name=<puzzle_name>`
+
+-   `npm run create-test-files --name=<puzzle_name>`
+
+-   `npm run rename-files --path=<Path>`
