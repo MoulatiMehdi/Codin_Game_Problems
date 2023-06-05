@@ -11,8 +11,17 @@ Don't be Lazy. Go solve it by your own.
 
 # Commands :
 
--   `npm run create-puzzle --name=<puzzle_name>`
+-   `npm run create-puzzle --name=<puzzle_name>` :
+    Create a New Puzzle Folder initialize with :
 
--   `npm run create-test-files --name=<puzzle_name>`
+    -   Files 📜:
+        -   test.json
+        -   main.js
+    -   Folder 📁:
+        -   tests
 
--   `npm run rename-files --path=<Path>`
+-   `npm run create-test-files --name=<puzzle_name>` :
+    Create Jest test File based on the test.json file
+
+-   `npm run rename-files --path=<Path>` :
+    Remove spaces and underscore sign from the name of files and folder and replace it with the minus sign
