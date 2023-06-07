@@ -25,3 +25,4 @@ Don't be Lazy. Go solve it by your own.
 
 -   `npm run rename-files --path=<Path>` :
     Remove spaces and underscore sign from the name of files and folder and replace it with the minus sign
+

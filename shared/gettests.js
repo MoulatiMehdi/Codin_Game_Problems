@@ -3,11 +3,12 @@
 const getTest = async (test) => {
 	try {
 		const header = await test.querySelector(".testcase-header");
+		await header.click();
+
 		const inDiv = await test.querySelector(".testcase-text.testcase-in");
 		const outDiv = await test.querySelector(".testcase-text.testcase-out");
 
 		// click the header to show the tests
-		await header.click();
 
 		// get the name of the test
 		const number = await header.querySelector(".testcase-number").innerText;
@@ -29,8 +30,7 @@ const getTest = async (test) => {
 			input,
 			output,
 		});
-	} catch (error) {
-	}
+	} catch (error) {}
 };
 document.querySelector(".header-button.showtestcases-button").click();
 const object = {
