@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Roboto:wght@700&display=swap");
+
+:root {
+	--text-color: #fff;
+   --title-color : #838891;
+	--color-const: #18a1ea;
+	--color-var: #f2bb13;
+	--bg-var: #333;
+   --bg-main : #252e38;
+   --bg-secondary : #363e48; 
+   --bg-thirth : #454c55;
+   --bg-fourth : ;
+}
+* {
+	font-family: "Nunito", sans-serif;
+}
+
+
+.blk {
+	border-bottom: 1px solid #41454a;
+	padding-bottom: 15px;
+	background-color: inherit;
+}
+
+body {
+	background-color: var(--bg-main) !important;
+	color: var(--text-color) !important;
+}
+
+h2 span{
+   color : var(--text-color)
+}
+var {
+	display: inline-block;
+
+	background-color: var(--color-var);
+	color: var(--bg-var);
+
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+
+	font-weight: 600;
+	font-size: 14px;
+	font-style: normal;
+
+	border-radius: 3px;
+}
+const {
+	color: var(--color-const);
+
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 2px;
+
+	font-size: 14px;
+	font-weight: 600;
+}
+.statement-body .statement-section {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 30px;
+}
+
+.title {
+	font-size: 20px;
+	font-weight: 800;
+
+	padding-top: 15px;
+	padding-bottom: 15px;
+   
+	color: var(--title-color);
+	background-color: inherit;
+	font-family: "Roboto", sans-serif;
+}
+.statement-body .statement-protocol {
+	padding: 20px 30px;
+	border-radius: 10px;
+	border-top: 1px solid var(--bg-thirth);
+   background-color: var(--bg-secondary);
+
+}
+.question-statement-input,
+.question-statement-constraints,
+.question-statement-output,
+.statement-inout {
+	background-color: inherit;
+}
+.question-statement-input strong {
+	color: inherit;
+	font-family: "Roboto", "sans serif";
+}
+
+.statement-inout-in,
+.statement-inout-out {
+	border-radius: 10px;
+	background-color: var(--bg-thirth) !important;
+	color: var(--text-color);
+	flex: 1;
+	flex-basis: auto;
+	margin: 5px;
+	padding: 10px;
+	max-width: 50%;
+}
+.statement-inout {
+	display: -webkit-flex;
+	display: flex;
+	width: calc(100% + 10px);
+	margin-left: -5px;
+	margin-right: 0;
+	padding: 0;
+}
+.statement-inout pre {
+	border: none;
+	background-color: rgba(0, 0, 0, 0);
+	font-family: inconsolata, monospace;
+	font-size: 20px;
+	line-height: 20px;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	width: 100%;
+	overflow-x: auto;
+}

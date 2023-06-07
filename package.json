@@ -9,6 +9,9 @@
 		"create-puzzle": "npm run --silent PSscript \"& {param($Name = $env:npm_config_Name) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\create-puzzle.ps1 -Name $Name}\""
 	},
 	"dependencies": {
-		"child_process": "^1.0.2"
+		"axios": "^1.4.0",
+		"cheerio": "^1.0.0-rc.12",
+		"child_process": "^1.0.2",
+		"puppeteer": "^20.5.0"
 	}
 }
