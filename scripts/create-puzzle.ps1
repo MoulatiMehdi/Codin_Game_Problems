@@ -6,7 +6,8 @@ $ErrorActionPreference = "stop"
 
 $mainPath = "D:\Programming\Solve_Puzzles\codin-game-problems"
 $PathPuzzle = Join-Path $mainPath -ChildPath "\puzzles"
-$Name = $Name -replace " ", "-"
+$Name = $Name.ToLower() -replace " ", "-"
+
 Import-Module -Name (Join-Path $mainPath -ChildPath "\scripts\message.psm1")
 
 Write-Host -ForegroundColor White  "$circle Creating New Puzzle Folder :" -NoNewline 
@@ -22,7 +23,7 @@ $FileJS = (Join-Path $mainPath -ChildPath "js\puzzle.js")
 
 try {
     if (Test-Path $FolderPuzzle) {
-        Remove-Item -Recurse  $FolderPuzzle 
+        throw "$Name Puzzle already exists in the puzzles Folder."
     }
     
     $null = mkdir -Path $FolderTests
@@ -33,11 +34,17 @@ try {
     Set-Location $FolderPuzzle
     node  $FileJS $Name
 
+
     if (Test-Path $FileJson ) {
-        npm run create-test-files --name="$Name" --silent
+        if ((get-content readme.md -raw ) -imatch "[input|output]" ) {
+            npm run create-test-files --name="$Name" --silent
+        }
+        else {
+            throw "Json file is Empty"
+        }
     }
     else {
-        throw "File Json hasn't created."
+        throw "File Json doesn't exist in the $Name puzzle Folder."
     }
 }
 catch {
