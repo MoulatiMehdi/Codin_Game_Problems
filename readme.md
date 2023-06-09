@@ -18,11 +18,18 @@ Don't be Lazy. Go solve it by your own.
 
 -   `npm run create-puzzle --name=<puzzle_name>` :
 
-    -   Create a New Puzzle Folder
+    -   Create a new puzzle folder that contains :
+        -   Files 📝:
+            -   `test.json` : contains input output of the puzzle
+            -   `readme.md` : contains the question of the puzzle
+        -   Folders 📁:
+            -   `tests` : contains jest test files '.test.js'
 
 -   `npm run create-test-files --name=<puzzle_name>` :
 
-    -   Create Jest test File based on the test.json file
+    -   Create Jest test File based on the `test.json` file
+        -   Create jest test files of a puzzle
+        -   If he folder will be overwritten if it already exist so be careful
 
 -   `npm run rename-files --path=<Path>` :
 
