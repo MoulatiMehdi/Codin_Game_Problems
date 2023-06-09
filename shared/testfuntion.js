@@ -15,7 +15,6 @@ function handleTest(output, solve, readline) {
 
 	// Assert the console.log output
 	expect(consoleOutput).toEqual(output);
-	console.log = console.log;
 }
 
 module.exports = handleTest;
