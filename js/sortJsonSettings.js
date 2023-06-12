@@ -1,7 +1,7 @@
 /** @format */
 
 const fs = require("fs");
-const sortObject = require("../sortObject.js");
+const sortObject = require("./modules/sortObject.mjs");
 const path = "C:\\Users\\dell\\AppData\\Roaming\\Code\\User\\settings.json";
 
 console.log("Loading the json File...");

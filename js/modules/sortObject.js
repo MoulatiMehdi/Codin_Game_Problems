@@ -1,3 +1,5 @@
+/** @format */
+
 function sortObject(object = {}) {
 	if (object instanceof Array) {
 		const sortedArray = [];
@@ -18,4 +20,4 @@ function sortObject(object = {}) {
 	}
 }
 
-module.exports = sortObject
+module.exports = sortObject;
