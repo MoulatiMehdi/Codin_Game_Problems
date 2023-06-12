@@ -1,6 +1,5 @@
 /** @format */
 
+const { getAll } = require("./main");
 
-const puzzle = require('./main.js')
-
-puzzle.getAll()
+getAll();

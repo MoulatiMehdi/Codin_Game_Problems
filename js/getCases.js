@@ -1,5 +1,5 @@
 /** @format */
 
-const puzzle = require("./main.js");
+const { getCases } = require("./main");
 
-puzzle.getCases()
+getCases();
