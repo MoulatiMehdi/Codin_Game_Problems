@@ -21,7 +21,7 @@ async function getTextContent(page, elem, selector) {
 	);
 
 	return page.evaluate(
-		(ele) => ele.textContent.trim(),
+		(ele) => ele.textContent,
 		await elem.$(selector)
 	);
 }
@@ -91,7 +91,7 @@ async function loadCases(page) {
 	}
 
 	// return the cases as a string JSON object
-	return JSON.stringify({ tests });
+	return JSON.stringify({ tests },{},4);
 }
 
 const keys = {
@@ -121,7 +121,6 @@ const keys = {
  * @returns {Promise<string>}
  */
 async function format(text) {
-	text = text.trim();
 	text = text.replace(/\<(\/)?var\>/g, "`");
 	text = text.replace(/\<(\/)?const\>/g, "**");
 	text = text.replace(/<(\/)?br\>/g, "\n\n");
@@ -148,7 +147,7 @@ async function loadQuestion(page) {
 				const { selector, title } = keys[key];
 
 				console.log(ele.querySelector(selector));
-				const text = ele.querySelector(selector).outerHTML.trim();
+				const text = ele.querySelector(selector).outerHTML;
 
 				console.log(text);
 				array.push(title);
