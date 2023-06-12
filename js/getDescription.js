@@ -1,5 +1,5 @@
 /** @format */
 
-const puzzle = require("./main.js");
+const { getDescription } = require("./main");
 
-puzzle.getDescription();
+getDescription();
