@@ -1,11 +1,16 @@
 /** @format */
 
-const puppeteer = require("puppeteer");
+const fs = require("fs");
+const puppeteer = require("puppeteer-core");
 const puzzle = require("./modules/puzzle.js");
 const msg = require("./modules/message.js");
-const fs = require("fs");
 
-const url = "https://www.codingame.com/ide/puzzle/" + process.argv[2];
+const mdFile = "readme.md";
+const jsonFile = "test.json";
+const mainJs = "main.js";
+const puzzleName = process.argv[2].replace(" ", "-").toLowerCase();
+
+const url = "https://www.codingame.com/ide/puzzle/" + puzzleName;
 
 const browserOptions = {
 	headless: false,
@@ -20,13 +25,13 @@ async function createCases(page) {
 	console.log("Loading test cases ...");
 	const object = await puzzle.loadCases(page);
 
-	console.log("Creating test.json File in ", __dirname, " Folder ...");
-	fs.writeFile("test.json", object, {}, (err) => {
+	console.log("Creating '" + jsonFile + "' File ...");
+	fs.writeFile(jsonFile, object, {}, (err) => {
 		if (err) {
 			msg.fail(err);
 			return;
 		}
-		msg.success("File 'test.json' has been created with success");
+		msg.success("File '" + jsonFile + "' has been created with success");
 	});
 }
 
@@ -34,30 +39,64 @@ async function createDescription(page) {
 	console.log("Loading the puzzle's question ...");
 	const text = await puzzle.loadQuestion(page);
 
-	console.log("Creating the problem.md file In ", __dirname, " Folder...");
-	fs.writeFile("README.md", text, (err) => {
+	console.log("Creating the '" + mdFile + "' file ...");
+	fs.writeFile(mdFile, text, (err) => {
 		if (err) {
 			msg.fail(err);
 			return;
 		}
 
-		msg.success("File 'problem.md' has been created with success");
+		msg.success("File '" + mdFile + "' has been created with success");
 	});
 }
 async function createAll(page) {
-	getCases(page);
-	getDescription(page);
+	await getCases(page);
+	await getDescription(page);
+}
+
+async function createCode(page) {
+	console.log("Loading the puzzle's code ...");
+
+	let text = "function solve(readline){\n";
+	text += await puzzle.loadCode(page);
+	text += "\n}\n\nmodule.exports = solve";
+
+	console.log("Creating '" + mainJs + "' file ...");
+
+	fs.writeFile(mainJs, text, (err) => {
+		if (err) {
+			msg.fail(err);
+			return;
+		}
+		msg.success("File '" + mainJs + "' has been created with success");
+	});
 }
 
 async function main(func) {
+	let totalDataSize = 0;
 	const browser = await puppeteer.launch(browserOptions);
 	const page = await browser.newPage();
 
+	await page.setRequestInterception(true);
+	page.on("response", (response) => {
+		const contentLength = response.headers()["content-length"];
+		if (contentLength) {
+			totalDataSize += parseInt(contentLength);
+		}
+	});
+
+	page.on("request", (request) => {
+		request.url();
+		if (request.resourceType() === "image") {
+			request.abort();
+		} else {
+			request.continue();
+		}
+	});
+
 	console.log("\033[1;37mLoading the page ...");
 	await page.goto(url, pageOptions);
-
 	const test = await page.$(".wilson_wrapper");
-
 	if (!test) {
 		await func(page).catch((err) => {
 			msg.fail(err);
@@ -67,17 +106,23 @@ async function main(func) {
 		msg.fail("Puzzle Not found.");
 	}
 
+	const connectionUsage = totalDataSize / (1024 * 1024);
+	console.log("Connection Usage: \t", connectionUsage.toFixed(2), "MB");
+
 	await browser.close();
 }
 
-function getDescription() {
-	main(createDescription);
+async function getDescription() {
+	await main(createDescription);
 }
-function getCases() {
-	main(createCases);
+async function getCases() {
+	await main(createCases);
 }
 
-function getAll() {
-	main(createAll);
+async function getCode() {
+	await main(createCode);
 }
-module.exports = { getAll, getDescription, getCases };
+async function getAll() {
+	await main(createAll);
+}
+module.exports = { getAll, getDescription, getCases, getCode };
