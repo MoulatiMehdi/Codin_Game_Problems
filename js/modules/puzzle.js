@@ -58,10 +58,10 @@ async function loadCases(page) {
 	};
 
 	// click the button that will show the test cases
-	clickButton(page, selectors.showTests);
+	await clickButton(page, selectors.showTests);
 
 	// wait until the element showed up (max 30 second)
-	page.waitForSelector(selectors.textcontainer);
+	await page.waitForSelector(selectors.textcontainer);
 
 	// get the container of the cases
 	const elems = await page.$$(selectors.textcontainer);
@@ -162,4 +162,56 @@ async function loadQuestion(page) {
 	text = await format(text);
 	return text;
 }
-module.exports = { loadCases, loadQuestion };
+/**
+ *
+ * @param {Page} page
+ */
+async function loadCode(page) {
+	const selectItem = ".code-management .selected-items";
+	const lineSelector = ".view-lines";
+
+	await page.waitForSelector(selectItem);
+	await clickButton(page, selectItem);
+	await page.waitForSelector(".language-menu");
+	await page.evaluate((list) => {
+		list.querySelectorAll("label.menu-item").forEach((div) => {
+			console.log(div.textContent.toLowerCase());
+			if (div.textContent.toLowerCase() === "javascript") {
+				console.log(div.innerText);
+				div.click();
+				return;
+			}
+		});
+	}, await page.$(".language-menu"));
+
+	await page.waitForFunction(() => {
+		const elem = document.querySelector(
+			".cg-ide-language-selector span.selected-item"
+		);
+		return elem && elem.textContent.toLowerCase() === "javascript";
+	});
+
+	let lines = await page.evaluate((childs) => {
+		const array = [];
+		for (let child of childs.children) {
+			const index = child.offsetTop / 16;
+			let line = "";
+
+			for (let span of child.querySelector("span").children) {
+				const classes = span.classList;
+				if (classes.contains("mtkw")) {
+					var len = span.textContent.length / 2;
+					line += " ".repeat(len);
+				} else {
+					line += span.textContent.replace(/\u00A0/g, " ");
+				}
+			}
+			array[index] = line;
+		}
+		return array;
+	}, await page.$(lineSelector));
+
+	console.log(lines.join("\n"));
+	return lines.join("\n");
+}
+module.exports = { loadCases, loadQuestion, loadCode };
