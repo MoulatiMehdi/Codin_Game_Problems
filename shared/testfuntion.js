@@ -1,7 +1,8 @@
 /** @format */
-let consoleOutput = "";
+let consoleOutput = [];
 const mockedLog = (output) => {
-	consoleOutput.push(output.toString());
+	const arr = output.toString().split("\n");
+	consoleOutput.push(...arr);
 };
 
 function handleTest(output, solve, readline) {
