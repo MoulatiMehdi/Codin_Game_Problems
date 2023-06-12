@@ -54,7 +54,7 @@ fs.readFile(__dirname + "\\test.json", "utf8", (err, data) => {
 				);
 				console.log(
 					"\033[1;30;42mCorrect answer : \033[0m",
-					"\033[1;37m" + test.output.join(" ")
+					"\033[1;37m" + test.output.join("\n")
 				);
 				console.log("\033[1;35m*".repeat(120));
 			}

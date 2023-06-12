@@ -13,14 +13,17 @@ const puzzleName = process.argv[2].replace(" ", "-").toLowerCase();
 const url = "https://www.codingame.com/ide/puzzle/" + puzzleName;
 
 const browserOptions = {
-	headless: false,
+	headless: true,
 	executablePath:
 		"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
 };
 const pageOptions = {
 	waitUntil: "networkidle0",
 };
-
+/**
+ *
+ * @param {puppeteer.Page} page
+ */
 async function createCases(page) {
 	console.log("Loading test cases ...");
 	const object = await puzzle.loadCases(page);
