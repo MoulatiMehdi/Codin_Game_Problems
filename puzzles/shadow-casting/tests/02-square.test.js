@@ -2,8 +2,23 @@
 
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
-const input = ["5", "###########", "##       ##", "##       ##", "##       ##", "###########"];
-const output = ["###########", "##-------##-", "##-``````##-`", "##-`     ##-`", "###########-`", " -----------`", "  ```````````"];
+const input = [
+    "5",
+    "###########",
+    "##       ##",
+    "##       ##",
+    "##       ##",
+    "###########"
+];
+const output = [
+    "###########",
+    "##-------##-",
+    "##-``````##-`",
+    "##-`     ##-`",
+    "###########-`",
+    " -----------`",
+    "  ```````````"
+];
 
 const readline = () => {
 	return input.shift();
