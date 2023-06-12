@@ -46,7 +46,7 @@ try {
         
     node  $FileJS $Name
     $isJsonExist = Test-Path $FileJson
-    $isJsonEmpty = (get-content $FileJson -raw ) -inotlike "[input,output]"
+    $isJsonEmpty = (get-content $FileJson -raw ) -imatch "(input)|(output)"
     if (!$isJsonExist) {
         throw "File Json doesn't exist in the $Name puzzle Folder."
     }
