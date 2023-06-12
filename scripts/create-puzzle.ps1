@@ -19,37 +19,45 @@ $FolderTests = Join-Path $FolderPuzzle "tests"
 
 $FileJson = Join-Path $FolderPuzzle "test.json"
 $FileMain = Join-Path $FolderPuzzle "main.js"
-$FileJS = (Join-Path $mainPath -ChildPath "js\puzzle.js")
+$FileJS = (Join-Path $mainPath -ChildPath "js\getAll.js")
 
 try {
     if (Test-Path $FolderPuzzle) {
         throw "$Name Puzzle already exists in the puzzles Folder."
     }
-    
-    $null = mkdir -Path $FolderTests
-    pass -Message "Tests folder have been created."
-    $null = New-Item -Path $FileJson
-    pass -Message "main.js File have been created."
-    Set-Content $FileMain -Value "function solve(readline){`n`n}`n`nmodule.exports = solve"
-    Set-Location $FolderPuzzle
-    node  $FileJS $Name
+    else {
+        <# Action when all if and elseif conditions are false #>
+        Write-Host "Creating Puzzle Folder ..."
+        $null = mkdir -Path $FolderPuzzle
+        Write-Host "`tCreating Tests Folder ..."
+        $null = mkdir -Path $FolderTests
 
+        Set-Content $FileMain -Value "function solve(readline){`n`n}`n`nmodule.exports = solve"
+        Set-Location $FolderPuzzle
 
-    if (Test-Path $FileJson ) {
-        if ((get-content readme.md -raw ) -imatch "[input|output]" ) {
-            npm run create-test-files --name="$Name" --silent
+        if (Test-Connection -ComputerName "www.google.com" -Count 1 -Quiet) {
+            node  $FileJS $Name
+            if (Test-Path $FileJson ) {
+                if ((get-content $FileJson -raw ) -imatch "[input|output]" ) {
+                    npm run create-test-files --name="$Name" --silent
+                }
+                else {
+                    throw "Json file is Empty"
+                }
+            }
+            else {
+                throw "File Json doesn't exist in the $Name puzzle Folder."
+            }
         }
         else {
-            throw "Json file is Empty"
+            throw "No connextion is available."
         }
-    }
-    else {
-        throw "File Json doesn't exist in the $Name puzzle Folder."
+        
     }
 }
 catch {
     <#Do this if a terminating exception happens#>
-    fail -Message "Failed to Create Item : "
+    fail -Message "Script failed to create the puzzle"
     Write-Host -ForegroundColor Red "`t+ Error : " $Error[0]
     exit
 }
