@@ -102,4 +102,5 @@ module.exports = {
 	success,
 	fail,
 	warn,
+	info,
 };
