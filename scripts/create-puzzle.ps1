@@ -2,6 +2,8 @@
 param(
     [string]$Name
 )
+
+$LastFolder = Get-Location
 $ErrorActionPreference = "stop"
 
 $mainPath = "D:\Programming\Solve_Puzzles\codin-game-problems"
@@ -10,9 +12,9 @@ $Name = $Name.ToLower() -replace " ", "-"
 
 Import-Module -Name (Join-Path $mainPath -ChildPath "\scripts\message.psm1")
 
-Write-Host -ForegroundColor White  "$circle Creating New Puzzle Folder :" -NoNewline 
-Write-Host -ForegroundColor Cyan " '$Name' " -NoNewline
-Write-Host -ForegroundColor White '...' 
+Write-Host -ForegroundColor Cyan  "$circle Creating New Puzzle :" -NoNewline 
+Write-Host -ForegroundColor Magenta " '$Name' " -NoNewline
+Write-Host -ForegroundColor Cyan '...' 
 
 $FolderPuzzle = Join-Path $pathPuzzle $Name
 $FolderTests = Join-Path $FolderPuzzle "tests"
@@ -22,43 +24,45 @@ $FileMain = Join-Path $FolderPuzzle "main.js"
 $FileJS = (Join-Path $mainPath -ChildPath "js\getAll.js")
 
 try {
-    if (Test-Path $FolderPuzzle) {
+    $isExist = Test-Path $FolderPuzzle
+    $isConnected = Test-Connection -ComputerName "www.google.com" -Count 1 -Quiet
+
+    if ($isExist) {
         throw "$Name Puzzle already exists in the puzzles Folder."
     }
-    else {
-        <# Action when all if and elseif conditions are false #>
-        Write-Host "Creating Puzzle Folder ..."
-        $null = mkdir -Path $FolderPuzzle
-        Write-Host "`tCreating Tests Folder ..."
-        $null = mkdir -Path $FolderTests
 
-        Set-Content $FileMain -Value "function solve(readline){`n`n}`n`nmodule.exports = solve"
-        Set-Location $FolderPuzzle
+    <# Action when all if and elseif conditions are false #>
+    Write-Host "Creating Puzzle Folder ..."
+    $null = mkdir -Path $FolderPuzzle
+    Write-Host "`tCreating Tests Folder ..."
+    $null = mkdir -Path $FolderTests
 
-        if (Test-Connection -ComputerName "www.google.com" -Count 1 -Quiet) {
-            node  $FileJS $Name
-            if (Test-Path $FileJson ) {
-                if ((get-content $FileJson -raw ) -imatch "[input|output]" ) {
-                    npm run create-test-files --name="$Name" --silent
-                }
-                else {
-                    throw "Json file is Empty"
-                }
-            }
-            else {
-                throw "File Json doesn't exist in the $Name puzzle Folder."
-            }
-        }
-        else {
-            throw "No connextion is available."
-        }
-        
+    Set-Content $FileMain -Value "function solve(readline){`n`n}`n`nmodule.exports = solve"
+    Set-Location $FolderPuzzle
+
+    if (!$isConnected) {
+        throw "No connextion is available."
     }
+        
+    node  $FileJS $Name
+    $isJsonExist = Test-Path $FileJson
+    $isJsonEmpty = (get-content $FileJson -raw ) -inotlike "[input,output]"
+    if (!$isJsonExist) {
+        throw "File Json doesn't exist in the $Name puzzle Folder."
+    }
+    if ($isJsonEmpty) {
+        throw "Json file is Empty"
+    }
+    npm run create-test-files --name="$Name" --silent
+
+    Set-Location $LastFolder
 }
 catch {
     <#Do this if a terminating exception happens#>
-    fail -Message "Script failed to create the puzzle"
+    fail -Message "Script failed : "
     Write-Host -ForegroundColor Red "`t+ Error : " $Error[0]
+    Set-Location $LastFolder
     exit
+
 }
 
