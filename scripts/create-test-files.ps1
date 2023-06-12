@@ -65,8 +65,8 @@ foreach ($test in $tests) {
         # change the input and output of the mockup string
         $newContent = $content -replace 'path' , ("$path\main" -replace '\\' , '/' )
         $newContent = $newContent -replace 'name' , $test.name 
-        $newContent = $newContent -replace "input = \[*\]" , ('input = ["' + ($test.input -join '", "') + '"]')
-        $newContent = $newContent -replace "output = \[*\]" , ('output = ["' + ($test.output -join '", "') + '"]')
+        $newContent = $newContent -replace "input = \[*\]" , ('input = ' + ($test.input | ConvertTo-Json))
+        $newContent = $newContent -replace "output = \[*\]" , ('output = ' + ($test.output | ConvertTo-Json))
 
         # set the string inside the file
         Set-Content -Path $filePath -Value $newContent
