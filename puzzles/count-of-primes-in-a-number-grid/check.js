@@ -33,8 +33,7 @@ fs.readFile(__dirname + "\\test.json", "utf8", (err, data) => {
 			console.log("\n");
 			console.log(
 				"\033[1;30;46mInputs         : \033[0m",
-				"\033[1;37m\n",
-				test.input.join('\n')
+				"\033[1;37m\n" + test.input.join("\n")
 			);
 
 			console.log = mock;
