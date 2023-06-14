@@ -49,12 +49,12 @@ Write-Host -ForegroundColor Magenta "$circle Creating Test Files ... "
 foreach ($test in $tests) {
     <# $test is the current item #>
     # the name of the test file (snake case) 
-    $file = ($test.name -replace ' ', '_').ToLower() 
+    $file = ($test.name -replace "[ _/\\]", '-').ToLower() 
     # add the extension to the name
     $file += ".test.js"
 
     # the location of the test files
-    $filePath = join-path $folderTest $file
+    $filePath = join-path $folderTest -ChildPath $file
     try {
         $null = New-Item -ItemType File -Path $filePath -Force 
 
@@ -64,9 +64,7 @@ foreach ($test in $tests) {
         
         # change the input and output of the mockup string
         $newContent = $content -replace 'path' , ("$path\main" -replace '\\' , '/' )
-        $newContent = $newContent -replace 'name' , $test.name 
-        $newContent = $newContent -replace "input = \[*\]" , ('input = ' + ($test.input | ConvertTo-Json))
-        $newContent = $newContent -replace "output = \[*\]" , ('output = ' + ($test.output | ConvertTo-Json))
+        $newContent = $newContent -replace '"JSON"' , (ConvertTo-Json $test) 
 
         # set the string inside the file
         Set-Content -Path $filePath -Value $newContent
