@@ -3,14 +3,19 @@
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
 const object = {
-    "name":  "02-Test-2",
+    "name":  "03-Medium-2-(More-than-1-large-snake)",
     "input":  [
-                  "10",
-                  "6",
-                  "8 9 3 13 12 11 6 9 5 3"
+                  "6 10",
+                  "^o^o^o^o^o",
+                  "||||||||||",
+                  "||||||||||",
+                  "||||||||||",
+                  "||||||||||",
+                  "ovovovovov"
               ],
     "output":  [
-                   "8"
+                   "6",
+                   "10"
                ]
 };
 const readline = () => {

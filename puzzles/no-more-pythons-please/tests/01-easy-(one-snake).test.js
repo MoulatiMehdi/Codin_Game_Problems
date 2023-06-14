@@ -3,14 +3,20 @@
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
 const object = {
-    "name":  "02-Test-2",
+    "name":  "01-Easy-(One-Snake)",
     "input":  [
-                  "10",
-                  "6",
-                  "8 9 3 13 12 11 6 9 5 3"
+                  "7 7",
+                  ".......",
+                  ".......",
+                  ".......",
+                  "\u003c-----o",
+                  ".......",
+                  ".......",
+                  "......."
               ],
     "output":  [
-                   "8"
+                   "7",
+                   "1"
                ]
 };
 const readline = () => {
