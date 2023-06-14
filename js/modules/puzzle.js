@@ -21,7 +21,7 @@ async function getTextContent(page, elem, selector) {
 	);
 
 	return page.evaluate(
-		(ele) => ele.textContent,
+		(ele) => ele.textContent.trim(),
 		await elem.$(selector)
 	);
 }
@@ -84,14 +84,14 @@ async function loadCases(page) {
 		const output = await getTextContent(page, elem, selectors.output);
 
 		tests.push({
-			name,
+			name: name.replace(/\s|_/g, "-"),
 			input: input.split("\n"),
 			output: output.split("\n"),
 		});
 	}
 
 	// return the cases as a string JSON object
-	return JSON.stringify({ tests },{},4);
+	return JSON.stringify({ tests }, {}, 4);
 }
 
 const keys = {
