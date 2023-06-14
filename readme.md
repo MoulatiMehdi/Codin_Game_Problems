@@ -16,7 +16,27 @@ Don't be Lazy. Go solve it by your own.
 
 # 3. Commands :
 
--   `npm run create-puzzle --name=<puzzle_name>` :
+-   `.\Rename-Files -Path "Path-Name"` :
+
+    -   Replace spaces and underscore of files name with the minus sign
+
+-   `.\Get-Cases "Puzzle-Name"` :
+
+    -   Get the puzzle's cases as a JSON file called 'test.json'
+    -   Connection is Required
+
+-   `.\Get-Description "Puzzle-Name"` :
+
+    -   Get the description of the puzzle as a markdown file called 'readme.md'
+    -   Connection is Required
+
+-   `.\Create-Test -Name "Puzzle-Name"` :
+
+    -   Create Jest test File based on the `test.json` file
+        -   Create jest test files of a puzzle
+        -   Exit when the puzzle Folder is already Exist
+
+-   `.\Create-Puzzle -Name "Puzzle-Name"` :
 
     -   Create a new puzzle folder that contains :
         -   Files 📝:
@@ -24,13 +44,4 @@ Don't be Lazy. Go solve it by your own.
             -   `readme.md` : contains the question of the puzzle
         -   Folders 📁:
             -   `tests` : contains jest test files '.test.js'
-
--   `npm run create-test-files --name=<puzzle_name>` :
-
-    -   Create Jest test File based on the `test.json` file
-        -   Create jest test files of a puzzle
-        -   If he folder will be overwritten if it already exist so be careful
-
--   `npm run rename-files --path=<Path>` :
-
-    -   replace spaces and underscore of files name with the minus sign
+    -   Connection is Required.

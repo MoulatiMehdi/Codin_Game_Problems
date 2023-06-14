@@ -3,10 +3,12 @@
 		"jest": "^29.5.0"
 	},
 	"scripts": {
-		"PSscript": "powershell -ExecutionPolicy Bypass -Comman",
-		"create-test-files": "npm run  PSscript \"& {param($target = $env:npm_config_name) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\create-test-files.ps1 -Name $target}\" --silent",
-		"rename-files": "npm run PSscript \"& {param($path = $env:npm_config_path) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\rename-files.ps1 -Path $path }\"  --silent",
-		"create-puzzle": "npm run --silent PSscript \"& {param($Name = $env:npm_config_Name) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\create-puzzle.ps1 -Name $Name}\""
+		"Run-PS": "powershell -ExecutionPolicy Bypass -File  .\\scripts\\Run-PS.ps1",
+		"create-test-files": "npm run  Run-PS --script create-test-files \"& {param($target = $env:npm_config_name) create-test-files.ps1 -Name $target}\" --silent",
+		"rename-files": "npm run PS-run \"& {param($path = $env:npm_config_path) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\rename-files.ps1 -Path $path }\"  --silent",
+		"create-puzzle": "npm run --silent PSscript \"& {param($Name = $env:npm_config_Name) D:\\Programming\\Solve_Puzzles\\codin-game-problems\\scripts\\create-puzzle.ps1 -Name $Name}\"",
+		"get-Cases": "npm run --silent PSscript \"&{param($Name = $env:npm_config_Name) D:}\"",
+		"runScript": "powershell -ExecutionPolicy Bypass -Command \"& {param($scriptName) .\\scripts\\$scriptName}\""
 	},
 	"dependencies": {
 		"axios": "^1.4.0",
