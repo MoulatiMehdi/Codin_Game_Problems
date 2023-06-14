@@ -2,32 +2,33 @@
 
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
-const input = [
-    "7",
-    "  #     #",
-    "   #   #",
-    "    # #",
-    "     #",
-    "    # #",
-    "   #   #",
-    "  #     #"
-];
-const output = [
-    "  #     #",
-    "   #   # -",
-    "    # # - `",
-    "     # - `",
-    "    # # `",
-    "   # - #",
-    "  # - ` #",
-    "   - `   -",
-    "    `     `"
-];
-
+const object = {
+    "name":  "01-X",
+    "input":  [
+                  "7",
+                  "  #     #",
+                  "   #   #",
+                  "    # #",
+                  "     #",
+                  "    # #",
+                  "   #   #",
+                  "  #     #"
+              ],
+    "output":  [
+                   "  #     #",
+                   "   #   # -",
+                   "    # # - `",
+                   "     # - `",
+                   "    # # `",
+                   "   # - #",
+                   "  # - ` #",
+                   "   - `   -",
+                   "    `     `"
+               ]
+};
 const readline = () => {
-	return input.shift();
+	return object.input.shift();
 };
 // Mocking user input and capturing console.log output
-
-test("01-X", () => handleTest(output, solve, readline));
+test(object.name, () => handleTest(object.output, solve, readline));
 

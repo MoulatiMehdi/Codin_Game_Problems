@@ -3,14 +3,17 @@
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
 const object = {
-    "name":  "02-Test-2",
+    "name":  "05-Asymmetric",
     "input":  [
-                  "10",
-                  "6",
-                  "8 9 3 13 12 11 6 9 5 3"
+                  "5 7",
+                  "1 9 3 1 3 3 3",
+                  "9 9 4 1 9 9 9",
+                  "1 3 6 9 7 9 1",
+                  "3 7 7 5 7 2 7",
+                  "9 6 2 3 8 3 3"
               ],
     "output":  [
-                   "8"
+                   "64"
                ]
 };
 const readline = () => {

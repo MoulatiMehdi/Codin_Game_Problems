@@ -3,14 +3,14 @@
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
 const object = {
-    "name":  "02-Test-2",
+    "name":  "06-5-pointed-Star",
     "input":  [
-                  "10",
-                  "6",
-                  "8 9 3 13 12 11 6 9 5 3"
+                  "1",
+                  "Star 78",
+                  "[ ( [ Star ( Star Star ) ] [ Star ( Star Star ) ] Star ) ( [ Star ( Star Star ) ] [ Star ( Star Star ) ] Star ) ]"
               ],
     "output":  [
-                   "8"
+                   "91.0"
                ]
 };
 const readline = () => {

@@ -3,14 +3,17 @@
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
 const object = {
-    "name":  "02-Test-2",
+    "name":  "03-Gordon-Lee-puzzle",
     "input":  [
-                  "10",
-                  "6",
-                  "8 9 3 13 12 11 6 9 5 3"
+                  "5 5",
+                  "3 8 2 1 9",
+                  "3 3 7 9 7",
+                  "1 9 4 6 9",
+                  "9 1 5 7 1",
+                  "9 1 7 3 9"
               ],
     "output":  [
-                   "8"
+                   "50"
                ]
 };
 const readline = () => {
