@@ -23,7 +23,7 @@ fs.readFile(__dirname + "\\test.json", "utf8", (err, data) => {
 
 		// the input of the target case
 		if (tests) {
-			const test = tests[3];
+			const test = tests[1];
 			// for (let test of tests[0]) {
 			console.log(
 				"\t".repeat(5),
