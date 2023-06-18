@@ -9,8 +9,9 @@
 			"request": "launch",
 			"name": "Launch Program",
 			"skipFiles": ["<node_internals>/**"],
-			"program": "${workspaceFolder}\\puzzles\\sudoku-solver\\check.js"
+			"program": "${workspaceFolder}\\puzzles\\the-lucky-number\\check.js"
 		}
 	]
 }
+
 
