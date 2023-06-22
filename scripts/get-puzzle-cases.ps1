@@ -1,4 +1,5 @@
 Param(
+    [Parameter(Mandatory=$true,Position=0)]
     [string]$Name
 )
 $Name = $Name.ToLower() -replace " ", "-"

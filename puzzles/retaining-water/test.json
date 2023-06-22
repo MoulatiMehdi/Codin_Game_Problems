@@ -1,0 +1,178 @@
+{
+    "tests": [
+        {
+            "name": "01-Test-1",
+            "input": [
+                "10",
+                "ZZZZZZZZZZ",
+                "ZAAAAAAAAZ",
+                "ZAAAAAAAAZ",
+                "ZAAAAAAAAZ",
+                "ZAAAAAAAAZ",
+                "ZAAAAAAAAZ",
+                "ZAAAAAAAAZ",
+                "ZAAAAAAAAZ",
+                "ZAAAAAAAAZ",
+                "ZZZZZZZZZZ"
+            ],
+            "output": [
+                "1600"
+            ]
+        },
+        {
+            "name": "02-Test-2",
+            "input": [
+                "10",
+                "ZZZZZZZZZZ",
+                "ZRRRRRRRRZ",
+                "ZRRRRRRRRZ",
+                "ZRRRRRRRRZ",
+                "ZFFFFFFFFZ",
+                "ZDDDDDDDDZ",
+                "ZDDDDDDDDZ",
+                "ZDDDDDDDDZ",
+                "ZDDDDDDDDZ",
+                "ZZZZZZZZZZ"
+            ],
+            "output": [
+                "1056"
+            ]
+        },
+        {
+            "name": "03-Test-3",
+            "input": [
+                "10",
+                "XXXXXXXXXX",
+                "XSSSSRAAAX",
+                "XSSSSRAAAX",
+                "XSSSSRAAAX",
+                "XXXXXCXXXX",
+                "XSSSSCBBBX",
+                "XSSSSCBBBX",
+                "RSSSSCBBBX",
+                "XSSSSCBBBX",
+                "XXXXXXXXXX"
+            ],
+            "output": [
+                "449"
+            ]
+        },
+        {
+            "name": "04-Test-4",
+            "input": [
+                "20",
+                "DDDDDDDDDDDDDDDDDDDD",
+                "DAAAAAAAAAAAABBBCCCC",
+                "DAAAAAAAAAAAABBBDDDD",
+                "DAAAAAAAAAAAABBBDDDD",
+                "DAAAAAAAAAAAABBBEEFF",
+                "GGGGGGGGGHHHIIJJEEFF",
+                "GGGGGGGGGHHHIIJJEEFF",
+                "KKKKKLLLLHHHIIJJMMMM",
+                "KKKKKLLLLNNOOPPPMMMM",
+                "QQQQRRSSSNNOOPPPTTTT",
+                "QQQQRRSSSNNOOUUUTTTT",
+                "VVVVRRWWWNNXXUUUYYYY",
+                "VVVVRRWWWZZXXAAAYYYY",
+                "VVVVBBBBBZZXXAAAYYYY",
+                "VVVVBBBBBZZCCCDDEEFR",
+                "GGGHHHIIIJJCCCDDEEFR",
+                "GGGHHHIIIJJKKKDDEEFR",
+                "GGGHHHIIIJJKKKDDEEFR",
+                "LLLLLLLLLLLLLMMMMNNR",
+                "FFFFFFFFFFFFFFFFFFFF"
+            ],
+            "output": [
+                "368"
+            ]
+        },
+        {
+            "name": "05-Test-5",
+            "input": [
+                "30",
+                "YENZRGRNFKINMCAGFMMGJWVZZRVCWQ",
+                "KKBAQPBNSWUXIDFHDZYNTOGTSAEKVS",
+                "EGTLNXYWRHLLYTNGOYBLULNOIGVMFV",
+                "WKNZBYVPCWLXZSESPZKIACDBLGNTJZ",
+                "MUREWDLLJVTOGPOHWPGIRUDOLEGTRL",
+                "LZKAVBAYBMNMOAAQGQKDCHGNOIBNNZ",
+                "URHBKIZDYSCPSGEHRIGIFEUYAWLYLX",
+                "YASRATWMWKORQIJYHKCYSWRLZIYBYX",
+                "YCDYJTUOFHCWTEXEWIOJFUVVFSJLWL",
+                "GUAWVRQETAUNHQLMARPFPFXCRRGVOI",
+                "TGMCABQJLFBRCYDQMWEKZJBYBFMADN",
+                "GZMUVJKJFZSEWAMIIZWPMWLOQRQJJH",
+                "JOCNZHLCORENIIJQINMRKZDOKPYJNW",
+                "MDGUSXCCKXWQGCFZRBDFGTCHHBFGSB",
+                "QYAZGXUEUMZFUDCSGJZUFGHGUUBWIH",
+                "NUVZDLUUYJYRGQSYHJJUKIAJGEKUQN",
+                "CNBQBDXAFDXNMLSZUOCLOCGYKVOVNE",
+                "PARZOFUPFZTGRITQXCMOZKXHCKBRMA",
+                "IVOKPXQGEHOMLSWIEATJUXAEDBKUFJ",
+                "XVLSZSAOWZOEQCZWBKOTWHNGFQNOQN",
+                "ORYFEBJITOHJHJZHCLJNFZRGLHQRJA",
+                "KZYENAUZGROOZIPCBKRBUNJWUPJRIG",
+                "YNEPCOUEPQFEGGXSTLKWKJJJJORUZB",
+                "GFNHOUWLRQVESEOFDMBQQDCACXLGYF",
+                "EBNNJKZYYOGGVUIDIEROUTFNNSBBXB",
+                "BHRKDBVBBLEMPYVOOKGUPUGAQNMBGT",
+                "ZDOLHRCSCLHTIXRPCTZMFQXCRNNMUT",
+                "SXBRAATOMKNRFGEMNEZKCSXMPKKMJV",
+                "DKMJHUYLWSHBIXJHMXEOSTLMEXUPQB",
+                "SZJSOCBQVELVOOWHGJCTSQOYNFTOKP"
+            ],
+            "output": [
+                "2440"
+            ]
+        },
+        {
+            "name": "06-Test-6",
+            "input": [
+                "40",
+                "XZADHVCOMBACBBHTEYCCXJDNNLMYYDVRQSAOWNOI",
+                "RZTKUWUMFVHBNEXKYVLQDRUFYAQKNIAIMJKBTGTA",
+                "EHAOTIYXUEVIQOXLMWTXJTXHNEZIBUQDRHGWTJOV",
+                "SMNHPIQCWIHIOHQBNMINYYUPKZWHSUFWKUMTENJA",
+                "VLFBINPJBIIXNHREZHUCUEIXMDOBMRMYYFIGTYEA",
+                "WRYSXJRQCGWOCBGQQORMTHLRYRQHACUUNRCHIRFV",
+                "JZBZWXKXMCTICXQALXZKHNXMTGPXXTQMMLHPEHGL",
+                "TTSURBLRCWGWSTVVELLVTCLJCRKTFSDBAOLGRHHN",
+                "OQLAKHARLJNJDIYHWSJRETNNZOVXEDOGNFJBPSXT",
+                "GZSTCXPBKPARDYSQGUUCKCSSPQAIKNVVFIXHWKUK",
+                "KJIAHTGEOGFBMTCQMZFCZGGTALBHOIZDOAEAVUKX",
+                "NABDPPDWUGXPMLOFHJBZJFNALQLXWNSPTCEOWDGD",
+                "ELAECPECRDVSKPUWUECZONMBZONPMZVFJQKCYHLC",
+                "XTFRWZHKFTZOCHDBVJZPPPHXYVBQEAWBOGEFXYIL",
+                "JIBXPJDKZPLTINBAOBUBZIUSISQPQZKUXZEGFHVV",
+                "BGVLWHNHYJNRMTQWWCLDGQVFNSHYDPRESKBWJMBN",
+                "SUFTWVUHUNNBXLBLVPHFNUADPBZIYOCMMJTOGBRU",
+                "VXUQTYNINPBJMLHPKFPDVCBYZCAKWASDPJEFYQPP",
+                "FUOSGBXGUZSODPITUAYOUFGCTYOBQCRCPFQMXFHY",
+                "JIHWAPIPQEKHFDULYPVKZVEOHWFZQJVKVIGIQRLI",
+                "DPIWHKRZVKYOEINTAVFMPBXLVYMGDHCSZIQPELHM",
+                "CJTVHFCMJBOGXWYWAHWXRASNTJFTAXCSJOELOYIN",
+                "ARCQUIJKAJIPLKQNFTYQZFMMHADTCBPRQQUVJXOV",
+                "OEUOOYJNXOUNFZWOOSOYCDISWAMEVFYZFTDCFDFG",
+                "OTQRWRPTUSIKRRYKJVEYGSXQSEGNNPQPVKJJDWDU",
+                "RBIIAEUNUCRKWZWNRLCBRVBFIOWWDBXLWTMBGFIW",
+                "UWYVUNGLTPOAUIVZTFDNAVGPZWSVOIZGBDXNFWKF",
+                "PRNRBRKQTKZPZRPXTJXZCACJFAKTGOVOWRXIQIEY",
+                "ZEJHECJGTJYSAVCBXLKUCDVIGQQGRXNSCOFZSRZJ",
+                "RVUJLHKDVNTYXCWGKPPSIWWTSOJXUYVAEVIFOXKH",
+                "PGLLUAICYQRASURUOGTJNKHAXJLNOGOKXQHQYKRS",
+                "NSVKBFGQFQHPCPUENNCPNWEEJUGUMVFUVXXFMQBA",
+                "KTXYSCTFRGDRRFTKRQFDQTLFNFWRDOMVTQLRLIOX",
+                "BQMCCWRYMHCAMSSRGRPCEPZTYIWAMYQCHSBCAKIM",
+                "LTURGHLZQJZSTFXPPVBHZKKNAMTYPHCVEBFKBABY",
+                "JGYXBZRDJEYUCGFYYZLZXBLUKFHMAJYIDKKWFKRE",
+                "XLLTZANFRHDLEGTCSHWEJYNXNVGXJAJMXPJNVGSB",
+                "WJQQOLKPVIYUFFEMFOJHTJCWASTILFGGHWUECWAJ",
+                "HIQTTIUXRSIKZIBXVKMXEKQKBUGFUMEZGZXCBKQE",
+                "DEHPKLWEXHGMYRYZTGHUAQVIHUZKRTVTARLKCVBN"
+            ],
+            "output": [
+                "4832"
+            ]
+        }
+    ]
+}

@@ -1,4 +1,5 @@
 Param(
+    [Parameter(Mandatory=$true,Position=0)]
     [string]$Name
 )
 $Master = "D:\Programming\Solve_Puzzles\codin-game-problems"
