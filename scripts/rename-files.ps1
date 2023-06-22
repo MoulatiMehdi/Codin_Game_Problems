@@ -1,13 +1,14 @@
 param(
+    [Parameter(Mandatory = $true, Position = 0)]
     [string]$Path = ".\"
 )
 
 Import-Module -Name "D:\Programming\Solve_Puzzles\codin-game-problems\scripts\message.psm1"
 
 
-Write-Host -ForegroundColor White "$circle Renaming the files and Folders inside the folder" -NoNewline
-Write-Host -ForegroundColor cyan " '$Path' " -NoNewline
-Write-Host -ForegroundColor White " ..."
+Write-Host -ForegroundColor White "$circle Renaming the files and Folders inside the folder '" -NoNewline
+Write-Host -ForegroundColor cyan $Path.ToString() -NoNewline
+Write-Host -ForegroundColor White "' ..."
 
 $files = Get-ChildItem -Path $Path -Recurse  -Exclude 'node_modules' | Sort-Object -Property @{Expression = { $_.PSIsContainer -eq $true } } | Where-Object { 
     $_.FullName -notlike '*\node_modules\*' -and $_.Name -cmatch "[ _]+" 

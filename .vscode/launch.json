@@ -9,9 +9,12 @@
 			"request": "launch",
 			"name": "Launch Program",
 			"skipFiles": ["<node_internals>/**"],
-			"program": "${workspaceFolder}\\puzzles\\the-lucky-number\\check.js"
+			"program": "${workspaceFolder}\\puzzles\\remove-insert-statements\\check.js"
 		}
 	]
 }
+
+
+
 
 

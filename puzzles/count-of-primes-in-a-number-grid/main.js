@@ -12,7 +12,7 @@ function solve(readline) {
 	count(R, C, (i) => arr[i]);
 	count(C, R, (i) => arr.map((line) => line[i]).join(""));
 	console.log(prime.size);
-	console.error(prime);
+
 	function count(A, B, func) {
 		for (let i = 0; i < A; i++) {
 			const text = func(i);

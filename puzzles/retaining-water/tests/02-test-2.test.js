@@ -3,12 +3,22 @@
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
 const object = {
-    "name":  "05-64-bit-integer",
+    "name":  "02-Test-2",
     "input":  [
-                  "92871036442 3363728910382456"
+                  "10",
+                  "ZZZZZZZZZZ",
+                  "ZRRRRRRRRZ",
+                  "ZRRRRRRRRZ",
+                  "ZRRRRRRRRZ",
+                  "ZFFFFFFFFZ",
+                  "ZDDDDDDDDZ",
+                  "ZDDDDDDDDZ",
+                  "ZDDDDDDDDZ",
+                  "ZDDDDDDDDZ",
+                  "ZZZZZZZZZZ"
               ],
     "output":  [
-                   "1160053175781729"
+                   "1056"
                ]
 };
 const readline = () => {

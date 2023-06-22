@@ -16,32 +16,102 @@ Don't be Lazy. Go solve it by your own.
 
 # 3. Commands :
 
--   `.\Rename-Files -Path "Path-Name"` :
+-   `.\Rename-Files` :
 
-    -   Replace spaces and underscore of files name with the minus sign
+    -   **DESCRIPTION** :
+        -   rename files with space and underscore and change them to minus sign
+    -   **PARAMETERS** :
+        -   `-Path <string>` : the path where to apply it
+            -   Required : true
+            -   Position : 0
+            -   Default Value : Current directory
+            -   Accept pipeline :False
+            -   Accept wildcard characters : False
 
--   `.\Get-Cases "Puzzle-Name"` :
+-   `.\Get-Cases` :
 
-    -   Get the puzzle's cases as a JSON file called 'test.json'
-    -   Connection is Required
+    -   **DESCRIPTION** :
 
--   `.\Get-Description "Puzzle-Name"` :
+        -   Get the puzzle's cases From CodinGame Website as a JSON file called 'test.json'
+        -   the file will be created inside the puzzle folder
+        -   Connection is Required
 
-    -   Get the description of the puzzle as a markdown file called 'readme.md'
-    -   Connection is Required
+    -   **PARAMETERS** :
+        -   `-Name <string>` : name of the puzzle
+            -   Required : true
+            -   Position : 0
+            -   Default Value : False
+            -   Accept pipeline :False
+            -   Accept wildcard characters : False
 
--   `.\Create-Test -Name "Puzzle-Name"` :
+-   `.\Get-Description` :
 
-    -   Create Jest test File based on the `test.json` file
-        -   Create jest test files of a puzzle
-        -   Exit when the puzzle Folder is already Exist
+    -   **Syntax** :
+        ```ps1
+            .\Get-Description [-Name <string>]
+        ```
+    -   **DESCRIPTION** :
 
--   `.\Create-Puzzle -Name "Puzzle-Name"` :
+        -   load the description of the puzzle from the codinGame website as a markdown file called 'readme.md' inside the puzzle folder
+        -   Connection is Required
 
-    -   Create a new puzzle folder that contains :
-        -   Files 📝:
-            -   `test.json` : contains input output of the puzzle
-            -   `readme.md` : contains the question of the puzzle
-        -   Folders 📁:
-            -   `tests` : contains jest test files '.test.js'
-    -   Connection is Required.
+    -   **PARAMETERS** :
+        -   `-Name <string>` : Name of the puzzle
+            -   Required : true
+            -   Position : 0
+            -   Default Value : False
+            -   Accept pipeline :False
+            -   Accept wildcard characters : False
+
+-   `.\Create-Test` :
+
+    -   **Syntax** :
+
+    ```ps1
+        .\Create-Test [-Name <string>]
+    ```
+
+    -   **DESCRIPTION**
+        -   Create Jest test Files inside the puzzle folder based on the `test.json` file.
+    -   **PARAMETERS** :
+        -   `-Name <string>` : name of the puzzle of the target
+            -   Required : true
+            -   Position : 0
+            -   Default Value : False
+            -   Accept pipeline :False
+            -   Accept wildcard characters : False
+
+-   `.\Create-Puzzle` :
+
+    -   **SYNTAX** :
+
+    ```ps1
+        .\Create-Puzzle [-Name <string> -Force]
+    ```
+
+    -   **DESCRIPTION**
+        -   Create a new puzzle folder that contains :
+            -   Files 📝:
+                -   `test.json` : contains input output of the puzzle
+                -   `readme.md` : contains the question of the puzzle
+                -   `main.js` : contains the main function that will solve the puzzle
+            -   Folders 📁:
+                -   `tests` : contains jest test files '.test.js'
+        -   Connection is Required.
+    -   **PARAMETERS**
+
+        -   `-Name <string>` :
+            name of the new puzzle the will be created in the `puzzles` folder
+
+            -   Required : true
+            -   Position : 0
+            -   Default Value : False
+            -   Accept pipeline :False
+            -   Accept wildcard characters : False
+
+        -   `-Force` : re-create the puzzle if it already exist
+            -   Required : false
+            -   Position : Named
+            -   Default Value : False
+            -   Accept pipeline :
+            -   Accept wildcard characters :

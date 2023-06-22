@@ -36,8 +36,6 @@ async function clickButton(elem, str) {
 		const button = document.querySelector(str);
 		button.click();
 	}, str);
-
-	console.log(str + " button is clicked");
 }
 
 /**
@@ -84,7 +82,7 @@ async function loadCases(page) {
 		const output = await getTextContent(page, elem, selectors.output);
 
 		tests.push({
-			name: name.replace(/\s|_/g, "-"),
+			name: name.replace(/\s+|_/g, "-"),
 			input: input.split("\n"),
 			output: output.split("\n"),
 		});
@@ -162,7 +160,7 @@ async function loadQuestion(page) {
 	return text;
 }
 /**
- *
+ * load the code form the codinGame site
  * @param {Page} page
  */
 async function loadCode(page) {

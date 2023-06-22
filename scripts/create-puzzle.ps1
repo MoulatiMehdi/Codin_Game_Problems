@@ -71,7 +71,8 @@ try {
     }
 
     # create jest test files inside the puzzle folder
-    npm run create-test-files --name="$Name" --silent
+    Set-Location $mainPath 
+    .\scripts\create-test-files.ps1 $Name
 }
 catch {
     <#Do this if a terminating exception happens#>

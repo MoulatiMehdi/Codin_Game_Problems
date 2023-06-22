@@ -3,12 +3,22 @@
 const solve = require("../main");
 const handleTest = require("d:/Programming/Solve_Puzzles/codin-game-problems/shared/testfuntion");
 const object = {
-    "name":  "02-Overlapping",
+    "name":  "01-Test-1",
     "input":  [
-                  "58 72"
+                  "10",
+                  "ZZZZZZZZZZ",
+                  "ZAAAAAAAAZ",
+                  "ZAAAAAAAAZ",
+                  "ZAAAAAAAAZ",
+                  "ZAAAAAAAAZ",
+                  "ZAAAAAAAAZ",
+                  "ZAAAAAAAAZ",
+                  "ZAAAAAAAAZ",
+                  "ZAAAAAAAAZ",
+                  "ZZZZZZZZZZ"
               ],
     "output":  [
-                   "10"
+                   "1600"
                ]
 };
 const readline = () => {

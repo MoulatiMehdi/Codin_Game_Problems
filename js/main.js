@@ -19,6 +19,7 @@ const browserOptions = {
 };
 const pageOptions = {
 	waitUntil: "networkidle0",
+	timeout: 100000,
 };
 /**
  *
@@ -53,8 +54,8 @@ async function createDescription(page) {
 	});
 }
 async function createAll(page) {
-	await getCases(page);
-	await getDescription(page);
+	await createDescription(page);
+	await createCases(page);
 }
 
 async function createCode(page) {
@@ -80,20 +81,23 @@ async function main(func) {
 	const browser = await puppeteer.launch(browserOptions);
 	const page = await browser.newPage();
 
+	// Enable caching
+	await page.setCacheEnabled(true);
 	await page.setRequestInterception(true);
+
+	page.on("request", (request) => {
+		request.url();
+		if (/(image)|(binary)/.test(request.resourceType())) {
+			request.abort();
+		} else {
+			request.continue();
+		}
+	});
+
 	page.on("response", (response) => {
 		const contentLength = response.headers()["content-length"];
 		if (contentLength) {
 			totalDataSize += parseInt(contentLength);
-		}
-	});
-
-	page.on("request", (request) => {
-		request.url();
-		if (request.resourceType() === "image") {
-			request.abort();
-		} else {
-			request.continue();
 		}
 	});
 
