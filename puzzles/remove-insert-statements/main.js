@@ -7,26 +7,20 @@ function solve(readline) {
 		.join("\n")
 		.replace(/\t/gs, " ".repeat(8));
 
-	const arr = str.split("\n");
+	const pattern = /(begin.*?end;)|("[^"]*")/gis;
 
-	const pattern =
-		/create\s*function.*?end;|\b(?!.*create\s*function.*?end;)/gis;
-	const funcs = str.match(pattern);
+	const funcs = str.match(pattern) || [];
+	console.info(funcs);
 
-	console.error(funcs);
-	const arr1 = str.split("\n");
+	str = str.replaceAll(pattern, "<body>");
+	console.error(str);
+	str = str.replace(/(?<!--)insert\s.*?;\n?/gis, "");
 
-	max = Math.max(arr.length, arr1.length);
-
-	col = Math.max(...arr.map((c) => c.length));
-	for (let i = 0; i < max; i++) {
-		console.info(
-			"\x1b[1;31m" + arr[i].padEnd(col, " "),
-			"\x1b[1;35m-".repeat(20),
-			"\x1b[1;32m" + arr1[i] + "\x1b[0m"
-		);
+	for (let func of funcs) {
+		str = str.replace("<body>", func);
 	}
-	console.info("\n\n");
+
+	console.log(str.trim());
 }
 
 module.exports = solve;
