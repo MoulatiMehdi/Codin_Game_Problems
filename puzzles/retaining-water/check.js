@@ -2,14 +2,13 @@
 
 const fs = require("fs");
 const solve = require("./main");
-const print = require("./print");
 
 function readline(array) {
 	return array.shift();
 }
-output = "";
+let output = [];
 const mock = (ans) => {
-	output = ans;
+	output.push(ans);
 };
 const backup = console.log;
 fs.readFile(__dirname + "\\test.json", "utf8", (err, data) => {
@@ -26,34 +25,32 @@ fs.readFile(__dirname + "\\test.json", "utf8", (err, data) => {
 		if (!tests) {
 			throw "Tests json is Empty";
 		}
-		const indexes = [3];
+		const indexes = [0, 1, 2, 3, 4, 5];
 
 		for (let i of indexes) {
 			const test = tests[i];
+			output = [];
 			// for (let test of tests[0]) {
-			console.log("\t".repeat(5), "\x1b[1;30;41m\t" + test.name + "\t\n");
+			console.log("\t".repeat(2), "\x1b[1;30;41m\t" + test.name + "\t\n");
 
 			// get the input as table
-			const origin = test.input.map((c) => c.split(""));
+			const input = test.input.join("\n");
+			const answer = test.output.join("\n");
 
 			console.log = mock;
 			solve(() => readline(test.input));
 			console.log = backup;
 
-			const answer = test.output.map((c) => c.split(""));
-			const myAnswer = output.split("\n").map((c) => c.split(""));
-
 			// the input
 			console.log("\n\t\x1b[1;30;46m  Inputs:  \x1b[0m\n");
-			print(origin, origin);
-
+			console.log(input);
 			// the correct answer
 			console.log("\n\t\x1b[1;30;42m  Correct answer:  \x1b[0m\n");
-			print(answer, origin);
+			console.log(answer);
 
 			//my answer
-			console.log("\n\t\x1b[1;30;46m  My answer:  \x1b[0m\n");
-			print(myAnswer, origin);
+			console.log("\n\t\x1b[1;30;45m  My answer:  \x1b[0m\n");
+			console.log(output.join("\n"));
 		}
 	} catch (err) {
 		console.error(err);

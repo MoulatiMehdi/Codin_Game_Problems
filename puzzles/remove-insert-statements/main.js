@@ -21,9 +21,9 @@ function solve(readline) {
 	col = Math.max(...arr.map((c) => c.length));
 	for (let i = 0; i < max; i++) {
 		console.info(
-			"\033[1;31m" + arr[i].padEnd(col, " "),
-			"\033[1;35m-".repeat(20),
-			"\033[1;32m" + arr1[i] + "\033[0m"
+			"\x1b[1;31m" + arr[i].padEnd(col, " "),
+			"\x1b[1;35m-".repeat(20),
+			"\x1b[1;32m" + arr1[i] + "\x1b[0m"
 		);
 	}
 	console.info("\n\n");
