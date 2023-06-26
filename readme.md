@@ -2,19 +2,27 @@
 
 # 1. Goal 🎯:
 
-Solve puzzles from the <a href="https://www.codingame.com/home">CodinGame</a> WebSite to :
-
--   Improve my skills in programming
--   Learn new algorithms etc ...
--   Create Bots
+The goal of this repository is **Solve Puzzles** from the <a href="https://www.codingame.com/home">CodinGame</a> WebSite to improve my programming skills
 
 # 2. Don 't Cheat 🚫:
 
-Copy Paste the code to get some XP is just a Stupid thing to do.
-you need to solve it by yourself . since your goal is to improve your programming skills .
-Don't be Lazy. Go solve it by your own.
+Copy Paste the code to get some XP is just a **Stupid thing** to do.
+you need to solve it by yourself.
+Don't be Lazy. **GO SOLVE IT BY YOUR OWN**.
 
-# 3. Commands :
+# 3. Features 🌟
+
+This project is for javascript Windows users.
+since it use PowerShell or node packages to :
+
+-   Get puzzle statement from the website :
+    -   convert it to a `readme.md` file online
+-   Get puzzle cases for the website
+    -   convert it to a `test.json` file :
+    -   which contains input and output and the name of each test
+-   Create jest test files for your puzzle
+
+# 4. Commands 🤖
 
 -   `.\Rename-Files` :
 
