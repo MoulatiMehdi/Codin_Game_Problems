@@ -16,10 +16,15 @@ This project is for javascript Windows users.
 since it use PowerShell or node packages to :
 
 -   Get puzzle statement from the website :
-    -   convert it to a `readme.md` file online
+    -   convert it to a `readme.md` file
 -   Get puzzle cases for the website
+
     -   convert it to a `test.json` file :
-    -   which contains input and output and the name of each test
+    -   this file contains for each cases :
+        -   input
+        -   output
+        -   name
+
 -   Create jest test files for your puzzle
 
 # 4. Commands 🤖
