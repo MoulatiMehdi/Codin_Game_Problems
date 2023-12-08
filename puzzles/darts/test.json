@@ -1,0 +1,93 @@
+{
+    "tests": [
+        {
+            "name": "01-Hit-and-Miss-Duos",
+            "input": [
+                "20",
+                "2",
+                "Will",
+                "Jill",
+                "4",
+                "Will 0 0",
+                "Jill 0 0",
+                "Will 20 20",
+                "Jill 0 0"
+            ],
+            "output": [
+                "Jill 30",
+                "Will 15"
+            ]
+        },
+        {
+            "name": "02-Solo-Play",
+            "input": [
+                "20",
+                "1",
+                "Will",
+                "3",
+                "Will -10 10",
+                "Will -5 7",
+                "Will 0 0"
+            ],
+            "output": [
+                "Will 30"
+            ]
+        },
+        {
+            "name": "03-Chaotic-Ties",
+            "input": [
+                "20",
+                "5",
+                "Eric",
+                "Joe",
+                "Molly",
+                "Louis",
+                "Brandon",
+                "10",
+                "Joe 0 0",
+                "Molly 0 0",
+                "Brandon 0 0",
+                "Eric -50 50",
+                "Louis 50 -50",
+                "Joe 10 10",
+                "Molly -10 10",
+                "Brandon -10 -10",
+                "Eric 5 5",
+                "Louis 0 0"
+            ],
+            "output": [
+                "Joe 20",
+                "Molly 20",
+                "Brandon 20",
+                "Eric 15",
+                "Louis 15"
+            ]
+        },
+        {
+            "name": "04-Circles",
+            "input": [
+                "100",
+                "4",
+                "Will",
+                "Bill",
+                "Jill",
+                "Rekt",
+                "8",
+                "Will -51 0",
+                "Bill 51 0",
+                "Jill 49 2",
+                "Rekt 0 0",
+                "Will 35 35",
+                "Bill -20 -21",
+                "Jill 1 50",
+                "Rekt -13 39"
+            ],
+            "output": [
+                "Rekt 25",
+                "Bill 15",
+                "Jill 15",
+                "Will 10"
+            ]
+        }
+    ]
+}

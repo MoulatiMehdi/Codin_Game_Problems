@@ -1,0 +1,70 @@
+{
+    "tests": [
+        {
+            "name": "01-Easy-Win",
+            "input": [
+                "4",
+                "Paper",
+                "Paper",
+                "Paper",
+                "Rock"
+            ],
+            "output": [
+                "Scissors",
+                "0"
+            ]
+        },
+        {
+            "name": "02-Draw-Doesn't-Stop-The-Match",
+            "input": [
+                "7",
+                "Paper",
+                "Rock",
+                "Paper",
+                "Rock",
+                "Paper",
+                "Rock",
+                "Scissors"
+            ],
+            "output": [
+                "Paper",
+                "1"
+            ]
+        },
+        {
+            "name": "03-Round-The-Clock",
+            "input": [
+                "5",
+                "Rock",
+                "Scissors",
+                "Paper",
+                "Rock",
+                "Rock"
+            ],
+            "output": [
+                "Paper",
+                "3"
+            ]
+        },
+        {
+            "name": "04-Tiebreaker",
+            "input": [
+                "10",
+                "Rock",
+                "Scissors",
+                "Scissors",
+                "Scissors",
+                "Paper",
+                "Rock",
+                "Rock",
+                "Rock",
+                "Scissors",
+                "Paper"
+            ],
+            "output": [
+                "Rock",
+                "1"
+            ]
+        }
+    ]
+}
