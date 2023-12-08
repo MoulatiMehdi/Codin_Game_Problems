@@ -9,10 +9,11 @@
 			"request": "launch",
 			"name": "Launch Program",
 			"skipFiles": ["<node_internals>/**"],
-			"program": "${workspaceFolder}\\puzzles\\remove-insert-statements\\check.js"
+			"program": "${workspaceFolder}\\puzzles\\rocks-papers-scissors-es\\check.js"
 		}
 	]
 }
+
 
 
 
