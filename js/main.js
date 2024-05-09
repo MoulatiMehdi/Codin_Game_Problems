@@ -101,7 +101,7 @@ async function main(func) {
 		}
 	});
 
-	console.log("\033[1;37mLoading the page ...");
+	console.log("\x1b[1;37mLoading the page ...");
 	await page.goto(url, pageOptions);
 	const test = await page.$(".wilson_wrapper");
 	if (!test) {

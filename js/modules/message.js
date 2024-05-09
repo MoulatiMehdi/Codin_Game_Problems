@@ -31,7 +31,7 @@ const ANSI = {
 		reverse: 7,
 		hidden: 8,
 	},
-	reset: "\033[0m",
+	reset: "\x1b[0m",
 };
 
 /**
@@ -50,7 +50,7 @@ function format(
 	textColor = null,
 	BackgroundColor = null
 ) {
-	let escp = "\033[" + ANSI.style[style.toLowerCase()];
+	let escp = "\x1b[" + ANSI.style[style.toLowerCase()];
 	textColor && (escp += `;${ANSI.color[textColor.toLowerCase()]}`);
 	BackgroundColor &&
 		(escp += `;${ANSI.backgroundColor[BackgroundColor.toLowerCase()]}`);
